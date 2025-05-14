@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloomify - Size Guide</title>
+    <link rel="stylesheet" href="size-guide.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Font Awesome for social icons (include in head) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts (include in head) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="eco-header">
+  <div class="container">
+    <!-- Logo with animated flower -->
+    <div class="logo">
+      <span class="logo-text">Bloomify</span>
+      <span class="eco-badge1">Eco-Friendly</span>
+    </div>
+    
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+      <ul>
+        <li>
+          <a href="index.html" class="nav-link">
+            <i class="fas fa-home nav-icon"></i>
+            <span class="nav-text">Home</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+        <li>
+          <a href="products.html" class="nav-link">
+            <i class="fas fa-leaf nav-icon"></i>
+            <span class="nav-text">Shop</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+        <li>
+          <a href="collections.html" class="nav-link">
+            <i class="fas fa-puzzle-piece nav-icon"></i>
+            <span class="nav-text">Collections</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+        <li>
+          <a href="about.html" class="nav-link">
+            <i class="fas fa-seedling nav-icon"></i>
+            <span class="nav-text">About</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+        <li>
+          <a href="contact.html" class="nav-link">
+            <i class="fas fa-envelope nav-icon"></i>
+            <span class="nav-text">Contact</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+      </ul>
+      
+      <!-- Floating decorative flowers -->
+      <div class="nav-flower nav-flower-1"></div>
+      <div class="nav-flower nav-flower-2"></div>
+    </nav>
+    
+    <!-- Header Icons with 3D effects -->
+    <div class="header-icons">
+  <div class="search-container">
+    <i class="fas fa-search search-icon"></i>
+    <input type="text" class="search-input" placeholder="Search flowers, decor...">
+    <div class="search-results"></div>
+  </div>
+  
+  <a href="account.html" class="icon-container account-icon">
+    <i class="fas fa-user icon"></i>
+    <span class="icon-tooltip">My Account</span>
+  </a>
+  
+  <a href="cart.html" class="icon-container cart-icon">
+    <i class="fas fa-shopping-cart icon"></i>
+    <span class="cart-count">0</span>
+    <span class="icon-tooltip">Eco Cart</span>
+  </a>
+</div>
+  </div>
+  
+  <!-- Animated eco particles -->
+  <div class="eco-particle particle-1"></div>
+  <div class="eco-particle particle-2"></div>
+  <div class="eco-particle particle-3"></div>
+</header>
+
+    <main>
+        <section class="size-guide-hero">
+            <div class="hero-content">
+                <h1>Our Size Guide</h1>
+                <p>Find the perfect size for your space with our eco-friendly floral arrangements</p>
+            </div>
+            <div class="hero-flower-3d" id="sizeGuideFlower3d"></div>
+        </section>
+
+        <section class="size-guide-intro">
+            <div class="container1">
+                <div class="intro-content">
+                    <h2>Choosing the Right Size</h2>
+                    <p>Our sustainable artificial flowers come in various sizes to fit every space. Use this guide to visualize how different arrangements will look in your home or office.</p>
+                    <p>All measurements are approximate and may vary slightly due to the handmade nature of our products.</p>
+                </div>
+                <div class="intro-visual" id="sizeIntroVisual3d"></div>
+            </div>
+        </section>
+
+        <section class="size-categories">
+            <div class="container1">
+                <div class="size-tabs">
+                    <button class="size-tab active" data-category="bouquets">Bouquets</button>
+                    <button class="size-tab" data-category="plants">Potted Plants</button>
+                    <button class="size-tab" data-category="wreaths">Wreaths</button>
+                    <button class="size-tab" data-category="centerpieces">Centerpieces</button>
+                </div>
+
+                <div class="size-content active" id="bouquets">
+                    <div class="size-visual" id="bouquetVisual3d"></div>
+                    <div class="size-table">
+                        <h3>Bouquet Sizes</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Size</th>
+                                    <th>Height</th>
+                                    <th>Width</th>
+                                    <th>Best For</th>
+                                    <th>Visual Reference</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Small</td>
+                                    <td>8-10 inches</td>
+                                    <td>6-8 inches</td>
+                                    <td>Desks, small tables, shelves</td>
+                                    <td><div class="size-indicator" data-size="small"></div></td>
+                                </tr>
+                                <tr>
+                                    <td>Medium</td>
+                                    <td>12-15 inches</td>
+                                    <td>10-12 inches</td>
+                                    <td>Side tables, console tables</td>
+                                    <td><div class="size-indicator" data-size="medium"></div></td>
+                                </tr>
+                                <tr>
+                                    <td>Large</td>
+                                    <td>18-24 inches</td>
+                                    <td>14-16 inches</td>
+                                    <td>Entryways, dining tables</td>
+                                    <td><div class="size-indicator" data-size="large"></div></td>
+                                </tr>
+                                <tr>
+                                    <td>Extra Large</td>
+                                    <td>28-36 inches</td>
+                                    <td>20-24 inches</td>
+                                    <td>Floor displays, large spaces</td>
+                                    <td><div class="size-indicator" data-size="xlarge"></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="size-content" id="plants">
+                    <div class="size-visual" id="plantVisual3d"></div>
+                    <div class="size-table">
+                        <h3>Potted Plant Sizes</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Size</th>
+                                    <th>Height (with pot)</th>
+                                    <th>Pot Diameter</th>
+                                    <th>Best For</th>
+                                    <th>Visual Reference</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Small</td>
+                                    <td>6-8 inches</td>
+                                    <td>4 inches</td>
+                                    <td>Windowsills, office desks</td>
+                                    <td><div class="size-indicator" data-size="small"></div></td>
+                                </tr>
+                                <tr>
+                                    <td>Medium</td>
+                                    <td>10-14 inches</td>
+                                    <td>6 inches</td>
+                                    <td>Side tables, shelves</td>
+                                    <td><div class="size-indicator" data-size="medium"></div></td>
+                                </tr>
+                                <tr>
+                                    <td>Large</td>
+                                    <td>16-24 inches</td>
+                                    <td>8-10 inches</td>
+                                    <td>Floor decor, corners</td>
+                                    <td><div class="size-indicator" data-size="large"></div></td>
+                                </tr>
+                                <tr>
+                                    <td>Extra Large</td>
+                                    <td>30-48 inches</td>
+                                    <td>12-14 inches</td>
+                                    <td>Statement pieces, entryways</td>
+                                    <td><div class="size-indicator" data-size="xlarge"></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="size-content" id="wreaths">
+                    <div class="size-visual" id="wreathVisual3d"></div>
+                    <div class="size-table">
+                        <h3>Wreath Sizes</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Size</th>
+                                    <th>Diameter</th>
+                                    <th>Thickness</th>
+                                    <th>Best For</th>
+                                    <th>Visual Reference</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Small</td>
+                                    <td>12 inches</td>
+                                    <td>3-4 inches</td>
+                                    <td>Doors, small walls</td>
+                                    <td><div class="size-indicator" data-size="small"></div></td>
+                                </tr>
+                                <tr>
+                                    <td>Medium</td>
+                                    <td>18 inches</td>
+                                    <td>4-5 inches</td>
+                                    <td>Standard doors, walls</td>
+                                    <td><div class="size-indicator" data-size="medium"></div></td>
+                                </tr>
+                                <tr>
+                                    <td>Large</td>
+                                    <td>24 inches</td>
+                                    <td>5-6 inches</td>
+                                    <td>Large doors, statement walls</td>
+                                    <td><div class="size-indicator" data-size="large"></div></td>
+                                </tr>
+                                <tr>
+                                    <td>Extra Large</td>
+                                    <td>30-36 inches</td>
+                                    <td>6-8 inches</td>
+                                    <td>Grand entryways, events</td>
+                                    <td><div class="size-indicator" data-size="xlarge"></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="size-content" id="centerpieces">
+                    <div class="size-visual" id="centerpieceVisual3d"></div>
+                    <div class="size-table">
+                        <h3>Centerpiece Sizes</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Size</th>
+                                    <th>Height</th>
+                                    <th>Width/Length</th>
+                                    <th>Best For</th>
+                                    <th>Visual Reference</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Small</td>
+                                    <td>6-8 inches</td>
+                                    <td>8-10 inches</td>
+                                    <td>Small tables, intimate settings</td>
+                                    <td><div class="size-indicator" data-size="small"></div></td>
+                                </tr>
+                                <tr>
+                                    <td>Medium</td>
+                                    <td>10-12 inches</td>
+                                    <td>12-14 inches</td>
+                                    <td>Standard dining tables</td>
+                                    <td><div class="size-indicator" data-size="medium"></div></td>
+                                </tr>
+                                <tr>
+                                    <td>Large</td>
+                                    <td>14-18 inches</td>
+                                    <td>16-20 inches</td>
+                                    <td>Large tables, buffet tables</td>
+                                    <td><div class="size-indicator" data-size="large"></div></td>
+                                </tr>
+                                <tr>
+                                    <td>Extra Large</td>
+                                    <td>20-24 inches</td>
+                                    <td>24-30 inches</td>
+                                    <td>Event centerpieces, grand displays</td>
+                                    <td><div class="size-indicator" data-size="xlarge"></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="size-comparison">
+            <div class="container1">
+                <h2>Visual Size Comparison</h2>
+                <p>See how our sizes compare to common household objects</p>
+                <div class="comparison-visual" id="comparisonVisual3d"></div>
+                <div class="comparison-legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #4a8f29;"></div>
+                        <span>Small (8-10")</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #f8c537;"></div>
+                        <span>Medium (12-15")</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #ff6b6b;"></div>
+                        <span>Large (18-24")</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #9370db;"></div>
+                        <span>X-Large (28-36")</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="size-tips">
+            <div class="container1">
+                <h2>Sizing Tips & Recommendations</h2>
+                <div class="tips-grid">
+                    <div class="tip-card" id="tip3d-1">
+                        <div class="tip-icon"></div>
+                        <h3>Measuring Your Space</h3>
+                        <p>Use a tape measure to determine the available space. Leave at least 6 inches of clearance around arrangements for a balanced look.</p>
+                    </div>
+                    <div class="tip-card" id="tip3d-2">
+                        <div class="tip-icon"></div>
+                        <h3>Table Centerpieces</h3>
+                        <p>For dining tables, choose arrangements that are no more than 1/3 the width of the table to allow room for place settings.</p>
+                    </div>
+                    <div class="tip-card" id="tip3d-3">
+                        <div class="tip-icon"></div>
+                        <h3>Entryway Displays</h3>
+                        <p>Large floor arrangements should be proportional to your ceiling height - taller ceilings can accommodate taller arrangements.</p>
+                    </div>
+                    <div class="tip-card" id="tip3d-4">
+                        <div class="tip-icon"></div>
+                        <h3>Wall Decor</h3>
+                        <p>Wreaths and wall arrangements should be about 1/4 to 1/3 the size of the wall or door they're decorating.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="size-cta">
+            <div class="container1">
+                <h2>Still Unsure About Sizing?</h2>
+                <p>Our floral experts are happy to help you choose the perfect size for your space.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn-primary">Contact Us</a>
+                    <a href="collections.html" class="btn-secondary">Browse Collections</a>
+                </div>
+                <div class="cta-flower-3d" id="ctaFlower3d"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+  <!-- Floating eco elements -->
+  <div class="eco-floating leaf-1"></div>
+  <div class="eco-floating leaf-2"></div>
+  
+  <div class="container">
+    <!-- Shop Section -->
+    <div class="footer-section">
+      <h3>Shop</h3>
+      <ul>
+        <li><a href="#">All Products</a></li>
+        <li><a href="#">New Arrivals</a></li>
+        <li><a href="#">Bestsellers</a></li>
+        <li><a href="#">Sale Items</a></li>
+      </ul>
+      
+      <div class="eco-badge-container">
+        <span class="eco-badge organic">Organic</span>
+        <span class="eco-badge sustainable">Sustainable</span>
+      </div>
+    </div>
+    
+    <!-- Customer Service Section -->
+    <div class="footer-section">
+      <h3>Customer Service</h3>
+      <ul>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Shipping & Returns</a></li>
+        <li><a href="#">Size Guide</a></li>
+      </ul>
+      
+      <div class="eco-badge-container">
+        <span class="eco-badge carbon-neutral">Carbon Neutral</span>
+        <span class="eco-badge fair-trade">Fair Trade</span>
+      </div>
+    </div>
+    
+    <!-- About Us Section -->
+    <div class="footer-section">
+      <h3>About Us</h3>
+      <ul>
+        <li><a href="#">Our Story</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+      
+      <div class="eco-badge-container">
+        <span class="eco-badge local">Local</span>
+        <span class="eco-badge ethical">Ethical</span>
+      </div>
+    </div>
+    
+    <!-- Newsletter Section -->
+    <div class="footer-section newsletter">
+      <h3>Newsletter</h3>
+      <p>Subscribe for updates and exclusive offers</p>
+      
+      <form class="newsletter-form">
+        <input type="email" placeholder="Your email address">
+        <button type="submit" class="btn primary">Subscribe</button>
+      </form>
+      
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+      
+      <div class="eco-badge-container">
+        <span class="eco-badge plastic-free">Plastic Free</span>
+        <span class="eco-badge zero-waste">Zero Waste</span>
+        <span class="eco-badge biodegradable">Biodegradable</span>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Copyright -->
+  <div class="copyright">
+    <p>&copy; 2025 Bloomify. All rights reserved.</p>
+  </div>
+</footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/gsap.min.js"></script>
+    <script src="size-guide.js"></script>
+</body>
+</html>

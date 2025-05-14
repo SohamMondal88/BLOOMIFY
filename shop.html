@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Bloomify</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Font Awesome for social icons (include in head) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts (include in head) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="eco-header">
+  <div class="container">
+    <!-- Logo with animated flower -->
+    <div class="logo">
+      <span class="logo-text">Bloomify</span>
+      <span class="eco-badge1">Eco-Friendly</span>
+    </div>
+    
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+      <ul>
+        <li>
+          <a href="index.html" class="nav-link">
+            <i class="fas fa-home nav-icon"></i>
+            <span class="nav-text">Home</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+        <li>
+          <a href="products.html" class="nav-link">
+            <i class="fas fa-leaf nav-icon"></i>
+            <span class="nav-text">Shop</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+        <li>
+          <a href="collections.html" class="nav-link">
+            <i class="fas fa-puzzle-piece nav-icon"></i>
+            <span class="nav-text">Collections</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+        <li>
+          <a href="about.html" class="nav-link">
+            <i class="fas fa-seedling nav-icon"></i>
+            <span class="nav-text">About</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+        <li>
+          <a href="contact.html" class="nav-link">
+            <i class="fas fa-envelope nav-icon"></i>
+            <span class="nav-text">Contact</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+      </ul>
+      
+      <!-- Floating decorative flowers -->
+      <div class="nav-flower nav-flower-1"></div>
+      <div class="nav-flower nav-flower-2"></div>
+    </nav>
+    
+    <!-- Header Icons with 3D effects -->
+    <div class="header-icons">
+  <div class="search-container">
+    <i class="fas fa-search search-icon"></i>
+    <input type="text" class="search-input" placeholder="Search flowers, decor...">
+    <div class="search-results"></div>
+  </div>
+  
+  <a href="account.html" class="icon-container account-icon">
+    <i class="fas fa-user icon"></i>
+    <span class="icon-tooltip">My Account</span>
+  </a>
+  
+  <a href="cart.html" class="icon-container cart-icon">
+    <i class="fas fa-shopping-cart icon"></i>
+    <span class="cart-count">0</span>
+    <span class="icon-tooltip">Eco Cart</span>
+  </a>
+</div>
+  </div>
+  
+  <!-- Animated eco particles -->
+  <div class="eco-particle particle-1"></div>
+  <div class="eco-particle particle-2"></div>
+  <div class="eco-particle particle-3"></div>
+</header>
+
+    <main class="product-listing-page">
+        <section class="page-header">
+            <div class="container">
+                <h1>Shop Artificial Flowers</h1>
+                <div class="breadcrumbs">
+                    <a href="index.html">Home</a> / <span>Shop</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="product-listing">
+            <div class="container">
+                <div class="listing-container">
+                    <!-- Filters Sidebar -->
+                    <aside class="filters-sidebar">
+                        <div class="filter-section">
+                            <h3>Categories</h3>
+                            <ul class="filter-list">
+                                <li><a href="#" class="active">All Products</a></li>
+                                <li><a href="#">Wedding Flowers</a></li>
+                                <li><a href="#">Home Decor</a></li>
+                                <li><a href="#">Party Decorations</a></li>
+                                <li><a href="#">Seasonal Arrangements</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="filter-section">
+                            <h3>Price Range</h3>
+                            <div class="price-range">
+                                <input type="range" min="0" max="100" value="50" class="slider" id="priceRange">
+                                <div class="price-values">
+                                    <span>$0</span>
+                                    <span>$100+</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="filter-section">
+                            <h3>Colors</h3>
+                            <div class="color-filters">
+                                <div class="color-option" style="background-color: #ffffff;" data-color="white"></div>
+                                <div class="color-option" style="background-color: #ff0000;" data-color="red"></div>
+                                <div class="color-option" style="background-color: #ff69b4;" data-color="pink"></div>
+                                <div class="color-option" style="background-color: #800080;" data-color="purple"></div>
+                                <div class="color-option" style="background-color: #ffff00;" data-color="yellow"></div>
+                                <div class="color-option" style="background-color: #0000ff;" data-color="blue"></div>
+                            </div>
+                        </div>
+
+                        <div class="filter-section">
+                            <h3>Rating</h3>
+                            <ul class="rating-filter">
+                                <li>
+                                    <input type="checkbox" id="rating5">
+                                    <label for="rating5">
+                                        <span class="stars">★★★★★</span>
+                                        <span class="count">(24)</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="rating4">
+                                    <label for="rating4">
+                                        <span class="stars">★★★★☆</span>
+                                        <span class="count">(18)</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="rating3">
+                                    <label for="rating3">
+                                        <span class="stars">★★★☆☆</span>
+                                        <span class="count">(12)</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <button class="btn primary apply-filters">Apply Filters</button>
+                        <button class="btn secondary reset-filters">Reset All</button>
+                    </aside>
+
+                    <!-- Product Grid -->
+                    <div class="product-grid-container">
+                        <div class="product-grid-header">
+                            <div class="results-count">Showing 24 of 56 products</div>
+                            <div class="sort-options">
+                                <label for="sort">Sort by:</label>
+                                <select id="sort">
+                                    <option value="popular">Most Popular</option>
+                                    <option value="newest">Newest</option>
+                                    <option value="price-low">Price: Low to High</option>
+                                    <option value="price-high">Price: High to Low</option>
+                                    <option value="rating">Customer Rating</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="product-grid">
+                            <!-- Products will be loaded here -->
+                        </div>
+
+                        <div class="pagination">
+                            <a href="#" class="page-nav disabled"><i class="fas fa-chevron-left"></i></a>
+                            <a href="#" class="page-number active">1</a>
+                            <a href="#" class="page-number">2</a>
+                            <a href="#" class="page-number">3</a>
+                            <span class="page-ellipsis">...</span>
+                            <a href="#" class="page-number">8</a>
+                            <a href="#" class="page-nav"><i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+  <!-- Floating eco elements -->
+  <div class="eco-floating leaf-1"></div>
+  <div class="eco-floating leaf-2"></div>
+  
+  <div class="container">
+    <!-- Shop Section -->
+    <div class="footer-section">
+      <h3>Shop</h3>
+      <ul>
+        <li><a href="#">All Products</a></li>
+        <li><a href="#">New Arrivals</a></li>
+        <li><a href="#">Bestsellers</a></li>
+        <li><a href="#">Sale Items</a></li>
+      </ul>
+      
+      <div class="eco-badge-container">
+        <span class="eco-badge organic">Organic</span>
+        <span class="eco-badge sustainable">Sustainable</span>
+      </div>
+    </div>
+    
+    <!-- Customer Service Section -->
+    <div class="footer-section">
+      <h3>Customer Service</h3>
+      <ul>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Shipping & Returns</a></li>
+        <li><a href="#">Size Guide</a></li>
+      </ul>
+      
+      <div class="eco-badge-container">
+        <span class="eco-badge carbon-neutral">Carbon Neutral</span>
+        <span class="eco-badge fair-trade">Fair Trade</span>
+      </div>
+    </div>
+    
+    <!-- About Us Section -->
+    <div class="footer-section">
+      <h3>About Us</h3>
+      <ul>
+        <li><a href="#">Our Story</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+      
+      <div class="eco-badge-container">
+        <span class="eco-badge local">Local</span>
+        <span class="eco-badge ethical">Ethical</span>
+      </div>
+    </div>
+    
+    <!-- Newsletter Section -->
+    <div class="footer-section newsletter">
+      <h3>Newsletter</h3>
+      <p>Subscribe for updates and exclusive offers</p>
+      
+      <form class="newsletter-form">
+        <input type="email" placeholder="Your email address">
+        <button type="submit" class="btn primary">Subscribe</button>
+      </form>
+      
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+      
+      <div class="eco-badge-container">
+        <span class="eco-badge plastic-free">Plastic Free</span>
+        <span class="eco-badge zero-waste">Zero Waste</span>
+        <span class="eco-badge biodegradable">Biodegradable</span>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Copyright -->
+  <div class="copyright">
+    <p>&copy; 2025 Bloomify. All rights reserved.</p>
+  </div>
+</footer>
+
+    <script src="script.js"></script>
+    <script src="products.js"></script>
+</body>
+</html>

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloomify - Artificial Flower Shop</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Font Awesome for social icons (include in head) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts (include in head) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header class="eco-header">
+  <div class="container">
+    <!-- Logo with animated flower -->
+    <div class="logo">
+      <span class="logo-text">Bloomify</span>
+      <span class="eco-badge1">Eco-Friendly</span>
+    </div>
+    
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+      <ul>
+        <li>
+          <a href="index.html" class="nav-link">
+            <i class="fas fa-home nav-icon"></i>
+            <span class="nav-text">Home</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+        <li>
+          <a href="shop.html" class="nav-link">
+            <i class="fas fa-leaf nav-icon"></i>
+            <span class="nav-text">Shop</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+        <li>
+          <a href="collections.html" class="nav-link">
+            <i class="fas fa-puzzle-piece nav-icon"></i>
+            <span class="nav-text">Collections</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+        <li>
+          <a href="about.html" class="nav-link">
+            <i class="fas fa-seedling nav-icon"></i>
+            <span class="nav-text">About</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+        <li>
+          <a href="contact.html" class="nav-link">
+            <i class="fas fa-envelope nav-icon"></i>
+            <span class="nav-text">Contact</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+      </ul>
+      
+      <!-- Floating decorative flowers -->
+      <div class="nav-flower nav-flower-1"></div>
+      <div class="nav-flower nav-flower-2"></div>
+    </nav>
+    
+    <!-- Header Icons with 3D effects -->
+    <div class="header-icons">
+  <div class="search-container">
+    <i class="fas fa-search search-icon"></i>
+    <input type="text" class="search-input" placeholder="Search flowers, decor...">
+    <div class="search-results"></div>
+  </div>
+  
+  <a href="account.html" class="icon-container account-icon">
+    <i class="fas fa-user icon"></i>
+    <span class="icon-tooltip">My Account</span>
+  </a>
+  
+  <a href="cart.html" class="icon-container cart-icon">
+    <i class="fas fa-shopping-cart icon"></i>
+    <span class="cart-count">0</span>
+    <span class="icon-tooltip">Eco Cart</span>
+  </a>
+</div>
+  </div>
+  
+  <!-- Animated eco particles -->
+  <div class="eco-particle particle-1"></div>
+  <div class="eco-particle particle-2"></div>
+  <div class="eco-particle particle-3"></div>
+</header>
+
+    <main>
+        <!-- Hero Section -->
+<section class="hero">
+  <!-- Floating 3D floral elements -->
+  <div class="hero-flower" style="--delay: 0s; --z: 40px; --size: 120px; top: 20%; left: 10%;">
+    <svg viewBox="0 0 100 100">
+      <path fill="#f3cbd3" d="M50 20a5 30 0 1 0 10 0 5 30 0 1 0-10 0z" transform="rotate(0 50 50)"/>
+      <path fill="#f3cbd3" d="M50 20a5 30 0 1 0 10 0 5 30 0 1 0-10 0z" transform="rotate(45 50 50)"/>
+      <path fill="#f3cbd3" d="M50 20a5 30 0 1 0 10 0 5 30 0 1 0-10 0z" transform="rotate(90 50 50)"/>
+      <path fill="#f3cbd3" d="M50 20a5 30 0 1 0 10 0 5 30 0 1 0-10 0z" transform="rotate(135 50 50)"/>
+      <circle cx="50" cy="50" r="10" fill="#f8f5f0"/>
+    </svg>
+  </div>
+  
+  <div class="hero-flower" style="--delay: 1s; --z: 20px; --size: 100px; top: 60%; left: 80%;">
+    <svg viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="30" fill="#b0c47b"/>
+      <circle cx="50" cy="50" r="20" fill="#6b8c42"/>
+      <circle cx="50" cy="50" r="10" fill="#2d5a3d"/>
+    </svg>
+  </div>
+  
+  <div class="hero-flower" style="--delay: 2s; --z: 60px; --size: 140px; top: 30%; left: 70%;">
+    <svg viewBox="0 0 100 100">
+      <path fill="#d4e8f0" d="M50 10a5 40 0 1 0 10 0 5 40 0 1 0-10 0z" transform="rotate(0 50 50)"/>
+      <path fill="#d4e8f0" d="M50 10a5 40 0 1 0 10 0 5 40 0 1 0-10 0z" transform="rotate(72 50 50)"/>
+      <path fill="#d4e8f0" d="M50 10a5 40 0 1 0 10 0 5 40 0 1 0-10 0z" transform="rotate(144 50 50)"/>
+      <path fill="#d4e8f0" d="M50 10a5 40 0 1 0 10 0 5 40 0 1 0-10 0z" transform="rotate(216 50 50)"/>
+      <path fill="#d4e8f0" d="M50 10a5 40 0 1 0 10 0 5 40 0 1 0-10 0z" transform="rotate(288 50 50)"/>
+      <circle cx="50" cy="50" r="10" fill="#f8f5f0"/>
+    </svg>
+  </div>
+  
+  <div class="hero-flower" style="--delay: 3s; --z: 50px; --size: 90px; top: 40%; left: 20%;">
+    <svg viewBox="0 0 100 100">
+      <path fill="#f3cbd3" d="M50 20a5 5 0 1 1-10 0 5 5 0 0 1 10 0zm-15 15a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm30 0a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm-15 15a5 5 0 1 1-10 0 5 5 0 0 1 10 0z"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-text">
+      <span class="eco-badge sustainable">Sustainable Luxury</span>
+      <h1>Eternal Beauty <span>in Every Petal</span></h1>
+      <p class="subtitle">Premium artificial flowers that bring nature's elegance to your space without the environmental impact</p>
+      
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Recyclable</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">0%</div>
+          <div class="stat-label">Waste</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Years Lasting</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="hero-buttons">
+      <a href="#" class="btn primary">
+        <span>Explore Collections</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+      <a href="#" class="btn secondary">
+        <span>Our Eco Promise</span>
+        <i class="fas fa-leaf"></i>
+      </a>
+    </div>
+  </div>
+  
+  <div class="hero-scroll">
+    <span>Discover More</span>
+    <div class="scroll-icon">
+      <div class="scroll-dot"></div>
+    </div>
+  </div>
+</section>
+
+        <!-- Categories Section -->
+        <section class="categories" id="categories">
+            <h2 class="section-title">Shop By Category</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <img src="https://via.placeholder.com/300x300?text=Wedding+Flowers" alt="Wedding Flowers">
+                    <h3>Wedding Flowers</h3>
+                    <a href="#" class="btn category-btn">Shop Now</a>
+                </div>
+                <div class="category-card">
+                    <img src="https://via.placeholder.com/300x300?text=Home+Decor" alt="Home Decor">
+                    <h3>Home Decor</h3>
+                    <a href="#" class="btn category-btn">Shop Now</a>
+                </div>
+                <div class="category-card">
+                    <img src="https://via.placeholder.com/300x300?text=Party+Decorations" alt="Party Decorations">
+                    <h3>Party Decorations</h3>
+                    <a href="#" class="btn category-btn">Shop Now</a>
+                </div>
+                <div class="category-card">
+                    <img src="https://via.placeholder.com/300x300?text=Seasonal+Arrangements" alt="Seasonal Arrangements">
+                    <h3>Seasonal Arrangements</h3>
+                    <a href="#" class="btn category-btn">Shop Now</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bestsellers Section -->
+        <section class="bestsellers">
+            <h2 class="section-title">Our Bestsellers</h2>
+            <div class="product-grid">
+                <!-- Product cards will be added dynamically with JavaScript -->
+            </div>
+            <div class="view-all">
+                <a href="#" class="btn primary">View All Products</a>
+            </div>
+        </section>
+
+        <!-- Promo Banner -->
+        <section class="promo-banner">
+            <div class="promo-content">
+                <h2>Get 10% Off Your First Order</h2>
+                <p>Use code: BLOOM10 at checkout</p>
+                <a href="#" class="btn primary">Shop Now</a>
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+
+<!-- Features Section -->
+<section class="features-section">
+  <div class="container1">
+    <h2 class="section-title">Our Eco-Friendly Features</h2>
+    <div class="features-grid">
+      <!-- Feature 1 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-leaf"></i>
+        </div>
+        <h3 class="feature-title">Sustainable Materials</h3>
+        <p class="feature-description">All our flowers are made from recycled and biodegradable materials that last for years.</p>
+        <div class="eco-badge-container">
+          <span class="eco-badge recycled">Recycled</span>
+          <span class="eco-badge biodegradable">Biodegradable</span>
+        </div>
+      </div>
+      
+      <!-- Feature 2 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-tint"></i>
+        </div>
+        <h3 class="feature-title">Water-Free</h3>
+        <p class="feature-description">No water waste compared to fresh flowers - saving thousands of gallons annually.</p>
+        <div class="eco-badge-container">
+          <span class="eco-badge water-wise">Water Wise</span>
+        </div>
+      </div>
+      
+      <!-- Feature 3 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-sun"></i>
+        </div>
+        <h3 class="feature-title">Solar Powered</h3>
+        <p class="feature-description">Our manufacturing is 100% powered by renewable solar energy.</p>
+        <div class="eco-badge-container">
+          <span class="eco-badge solar-powered">Solar Powered</span>
+        </div>
+      </div>
+      
+      <!-- Feature 4 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-truck"></i>
+        </div>
+        <h3 class="feature-title">Carbon Neutral Shipping</h3>
+        <p class="feature-description">All deliveries are carbon offset through our reforestation partnerships.</p>
+        <div class="eco-badge-container">
+          <span class="eco-badge carbon-neutral">Carbon Neutral</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Carousel Section -->
+<section class="testimonial-section">
+  <div class="container1">
+    <h2 class="section-title">What Our Customers Say</h2>
+    <div class="testimonial-carousel">
+      <!-- Testimonial 1 -->
+      <div class="testimonial-slide">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p>These artificial flowers are so realistic, my guests couldn't believe they weren't real! The best part is knowing I'm making an eco-friendly choice that lasts for years.</p>
+          </div>
+          <div class="testimonial-author">
+            <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Sarah J." class="author-avatar">
+            <div class="author-info">
+              <h4>Sarah J.</h4>
+              <p>Wedding Planner</p>
+            </div>
+          </div>
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Testimonial 2 -->
+      <div class="testimonial-slide">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p>As an environmentalist, I love that I can enjoy beautiful floral arrangements without the waste. The quality is exceptional and the eco-credentials are impeccable.</p>
+          </div>
+          <div class="testimonial-author">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael T." class="author-avatar">
+            <div class="author-info">
+              <h4>Michael T.</h4>
+              <p>Environmental Consultant</p>
+            </div>
+          </div>
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Testimonial 3 -->
+      <div class="testimonial-slide">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p>Our office has completely switched to Bloomify arrangements. They look fresh year-round, require zero maintenance, and align with our corporate sustainability goals.</p>
+          </div>
+          <div class="testimonial-author">
+            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Jennifer L." class="author-avatar">
+            <div class="author-info">
+              <h4>Jennifer L.</h4>
+              <p>Office Manager</p>
+            </div>
+          </div>
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Carousel Controls -->
+    <div class="carousel-controls">
+      <button class="carousel-prev"><i class="fas fa-chevron-left"></i></button>
+      <div class="carousel-dots"></div>
+      <button class="carousel-next"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </div>
+</section>
+
+        <!-- Blog Section -->
+        <section class="blog-section">
+            <h2 class="section-title">Latest from Our Blog</h2>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <img src="https://via.placeholder.com/300x200?text=Blog+Post+1" alt="Blog Post 1">
+                    <h3>5 Tips for Choosing the Perfect Artificial Flowers</h3>
+                    <p>Discover how to select the best artificial flowers for your home or event with our expert tips.</p>
+                    <a href="#" class="btn blog-btn">Read More</a>
+                </div>
+                <div class="blog-card">
+                    <img src="https://via.placeholder.com/300x200?text=Blog+Post+2" alt="Blog Post 2">
+                    <h3>The Environmental Impact of Artificial Flowers</h3>
+                    <p>Learn about the eco-friendly benefits of choosing artificial flowers over fresh ones.</p>
+                    <a href="#" class="btn blog-btn">Read More</a>
+                </div>
+                <div class="blog-card">
+                    <img src="https://via.placeholder.com/300x200?text=Blog+Post+3" alt="Blog Post 3">
+                    <h3>How to Care for Your Artificial Flowers</h3>
+                    <p>Keep your artificial flowers looking fresh and vibrant with these simple care tips.</p>
+                    <a href="#" class="btn blog-btn">Read More</a>
+                </div>
+            </div>
+        </section>
+        <!-- Call to Action Section -->
+        <section class="cta-section">
+            <h2>Join the Bloomify Community</h2>
+            <p>Subscribe to our newsletter for exclusive offers and eco-friendly tips.</p>
+            <a href="#" class="btn primary">Subscribe Now</a>
+        </section>
+        
+
+
+
+
+    </main>
+
+    <footer>
+  <!-- Floating eco elements -->
+  <div class="eco-floating leaf-1"></div>
+  <div class="eco-floating leaf-2"></div>
+  
+  <div class="container">
+    <!-- Shop Section -->
+    <div class="footer-section">
+      <h3>Shop</h3>
+      <ul>
+        <li><a href="#">All Products</a></li>
+        <li><a href="#">New Arrivals</a></li>
+        <li><a href="#">Bestsellers</a></li>
+        <li><a href="#">Sale Items</a></li>
+      </ul>
+      
+      <div class="eco-badge-container">
+        <span class="eco-badge organic">Organic</span>
+        <span class="eco-badge sustainable">Sustainable</span>
+      </div>
+    </div>
+    
+    <!-- Customer Service Section -->
+    <div class="footer-section">
+      <h3>Customer Service</h3>
+      <ul>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+        <li><a href="size-guide.html">Size Guide</a></li>
+      </ul>
+      
+      <div class="eco-badge-container">
+        <span class="eco-badge carbon-neutral">Carbon Neutral</span>
+        <span class="eco-badge fair-trade">Fair Trade</span>
+      </div>
+    </div>
+    
+    <!-- About Us Section -->
+    <div class="footer-section">
+      <h3>About Us</h3>
+      <ul>
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="about.html">Careers</a></li>
+        
+      </ul>
+      
+      <div class="eco-badge-container">
+        <span class="eco-badge local">Local</span>
+        <span class="eco-badge ethical">Ethical</span>
+      </div>
+    </div>
+    
+
+    <!-- Follow Us Section -->
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <ul>
+        <li><a href="pp.html">Privacy Policy</a></li>
+        <li><a href="tc.html">Terms &amp; Conditions</a></li>
+        <li><a href="dmca.html">DMCA Policy</a></li>
+        <li><a href="ccpa.html">CCPA Compliance</a></li>
+        <li><a href="gdpr.html">GDPR Compliance</a></li>
+        <li><a href="cpra.html">CPRA Compliance</a></li>
+        <li><a href="cpa.html">CPA Compliance</a></li>
+        <li><a href="dpa.html">DPA Compliance</a></li>
+        <li><a href="sp.html">Shipping & Returns Policy</a></li>
+        <li><a href="rr.html">Return &amp; Refund Policy</a></li>
+      </ul>
+      
+      <div class="eco-badge-container">
+        <span class="eco-badge community">Community Driven</span>
+      </div>
+    </div>
+    
+
+
+
+      
+      
+
+    <!-- Newsletter Section -->
+    <div class="footer-section newsletter">
+      <h3>Newsletter</h3>
+      <p>Subscribe for updates and exclusive offers</p>
+      
+      <form class="newsletter-form">
+        <input type="email" placeholder="Your email address">
+        <button type="submit" class="btn primary">Subscribe</button>
+      </form>
+      
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+      
+      <div class="eco-badge-container">
+        <span class="eco-badge plastic-free">Plastic Free</span>
+        <span class="eco-badge zero-waste">Zero Waste</span>
+        <span class="eco-badge biodegradable">Biodegradable</span>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Copyright -->
+  <div class="copyright">
+    <p>&copy; 2025 Bloomify. All rights reserved.</p>
+  </div>
+</footer>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>

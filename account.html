@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - Bloomify</title>
+    <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Font Awesome for social icons (include in head) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts (include in head) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="eco-header">
+  <div class="container">
+    <!-- Logo with animated flower -->
+    <div class="logo">
+      <span class="logo-text">Bloomify</span>
+      <span class="eco-badge1">Eco-Friendly</span>
+    </div>
+    
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+      <ul>
+        <li>
+          <a href="index.html" class="nav-link">
+            <i class="fas fa-home nav-icon"></i>
+            <span class="nav-text">Home</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+        <li>
+          <a href="products.html" class="nav-link">
+            <i class="fas fa-leaf nav-icon"></i>
+            <span class="nav-text">Shop</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+        <li>
+          <a href="collections.html" class="nav-link">
+            <i class="fas fa-puzzle-piece nav-icon"></i>
+            <span class="nav-text">Collections</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+        <li>
+          <a href="about.html" class="nav-link">
+            <i class="fas fa-seedling nav-icon"></i>
+            <span class="nav-text">About</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+        <li>
+          <a href="contact.html" class="nav-link">
+            <i class="fas fa-envelope nav-icon"></i>
+            <span class="nav-text">Contact</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+      </ul>
+      
+      <!-- Floating decorative flowers -->
+      <div class="nav-flower nav-flower-1"></div>
+      <div class="nav-flower nav-flower-2"></div>
+    </nav>
+    
+    <!-- Header Icons with 3D effects -->
+    <div class="header-icons">
+  <div class="search-container">
+    <i class="fas fa-search search-icon"></i>
+    <input type="text" class="search-input" placeholder="Search flowers, decor...">
+    <div class="search-results"></div>
+  </div>
+  
+  <a href="account.html" class="icon-container account-icon">
+    <i class="fas fa-user icon"></i>
+    <span class="icon-tooltip">My Account</span>
+  </a>
+  
+  <a href="cart.html" class="icon-container cart-icon">
+    <i class="fas fa-shopping-cart icon"></i>
+    <span class="cart-count">0</span>
+    <span class="icon-tooltip">Eco Cart</span>
+  </a>
+</div>
+  </div>
+  
+  <!-- Animated eco particles -->
+  <div class="eco-particle particle-1"></div>
+  <div class="eco-particle particle-2"></div>
+  <div class="eco-particle particle-3"></div>
+</header>
+
+    <main class="account-page">
+        <section class="page-header">
+            <div class="container">
+                <h1>My Account</h1>
+                <div class="breadcrumbs">
+                    <a href="index.html">Home</a> / <span>My Account</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="account-content">
+            <div class="container">
+                <div class="account-container">
+                    <!-- Account Sidebar -->
+                    <aside class="account-sidebar">
+                        <div class="account-welcome">
+                            <div class="account-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <h3>Welcome, <span class="user-name">Sarah Johnson</span></h3>
+                        </div>
+
+                        <nav class="account-menu">
+                            <ul>
+                                <li class="active"><a href="#dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                                <li><a href="#orders"><i class="fas fa-shopping-bag"></i> Orders</a></li>
+                                <li><a href="#wishlist"><i class="fas fa-heart"></i> Wishlist</a></li>
+                                <li><a href="#addresses"><i class="fas fa-map-marker-alt"></i> Addresses</a></li>
+                                <li><a href="#account"><i class="fas fa-user"></i> Account Details</a></li>
+                                <li><a href="#logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                            </ul>
+                        </nav>
+                    </aside>
+
+                    <!-- Account Main Content -->
+                    <div class="account-main">
+                        <!-- Dashboard Tab -->
+                        <div class="account-tab active" id="dashboard">
+                            <h2>Dashboard</h2>
+                            <div class="account-summary">
+                                <div class="summary-card">
+                                    <div class="summary-icon">
+                                        <i class="fas fa-shopping-bag"></i>
+                                    </div>
+                                    <div class="summary-content">
+                                        <h4>Total Orders</h4>
+                                        <p class="summary-value">5</p>
+                                    </div>
+                                </div>
+                                <div class="summary-card">
+                                    <div class="summary-icon">
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                    <div class="summary-content">
+                                        <h4>Wishlist Items</h4>
+                                        <p class="summary-value">3</p>
+                                    </div>
+                                </div>
+                                <div class="summary-card">
+                                    <div class="summary-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="summary-content">
+                                        <h4>Saved Addresses</h4>
+                                        <p class="summary-value">2</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="recent-orders">
+                                <h3>Recent Orders</h3>
+                                <div class="orders-table">
+                                    <div class="orders-table-header">
+                                        <div class="header-item order">Order</div>
+                                        <div class="header-item date">Date</div>
+                                        <div class="header-item status">Status</div>
+                                        <div class="header-item total">Total</div>
+                                        <div class="header-item actions">Actions</div>
+                                    </div>
+                                    <div class="orders-table-body">
+                                        <div class="order-row">
+                                            <div class="order-item order">
+                                                <span class="mobile-label">Order:</span>
+                                                <span class="order-number">#BL123456</span>
+                                            </div>
+                                            <div class="order-item date">
+                                                <span class="mobile-label">Date:</span>
+                                                <span class="order-date">June 15, 2023</span>
+                                            </div>
+                                            <div class="order-item status">
+                                                <span class="mobile-label">Status:</span>
+                                                <span class="order-status completed">Completed</span>
+                                            </div>
+                                            <div class="order-item total">
+                                                <span class="mobile-label">Total:</span>
+                                                <span class="order-total">$123.56</span>
+                                            </div>
+                                            <div class="order-item actions">
+                                                <a href="#" class="btn small">View</a>
+                                            </div>
+                                        </div>
+                                        <div class="order-row">
+                                            <div class="order-item order">
+                                                <span class="mobile-label">Order:</span>
+                                                <span class="order-number">#BL123455</span>
+                                            </div>
+                                            <div class="order-item date">
+                                                <span class="mobile-label">Date:</span>
+                                                <span class="order-date">May 28, 2023</span>
+                                            </div>
+                                            <div class="order-item status">
+                                                <span class="mobile-label">Status:</span>
+                                                <span class="order-status shipped">Shipped</span>
+                                            </div>
+                                            <div class="order-item total">
+                                                <span class="mobile-label">Total:</span>
+                                                <span class="order-total">$89.99</span>
+                                            </div>
+                                            <div class="order-item actions">
+                                                <a href="#" class="btn small">View</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="view-all-orders">
+                                    <a href="#orders" class="btn secondary">View All Orders</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Orders Tab -->
+                        <div class="account-tab" id="orders">
+                            <h2>My Orders</h2>
+                            <div class="orders-table">
+                                <div class="orders-table-header">
+                                    <div class="header-item order">Order</div>
+                                    <div class="header-item date">Date</div>
+                                    <div class="header-item status">Status</div>
+                                    <div class="header-item total">Total</div>
+                                    <div class="header-item actions">Actions</div>
+                                </div>
+                                <div class="orders-table-body">
+                                    <div class="order-row">
+                                        <div class="order-item order">
+                                            <span class="mobile-label">Order:</span>
+                                            <span class="order-number">#BL123456</span>
+                                        </div>
+                                        <div class="order-item date">
+                                            <span class="mobile-label">Date:</span>
+                                            <span class="order-date">June 15, 2023</span>
+                                        </div>
+                                        <div class="order-item status">
+                                            <span class="mobile-label">Status:</span>
+                                            <span class="order-status completed">Completed</span>
+                                        </div>
+                                        <div class="order-item total">
+                                            <span class="mobile-label">Total:</span>
+                                            <span class="order-total">$123.56</span>
+                                        </div>
+                                        <div class="order-item actions">
+                                            <a href="#" class="btn small">View</a>
+                                        </div>
+                                    </div>
+                                    <div class="order-row">
+                                        <div class="order-item order">
+                                            <span class="mobile-label">Order:</span>
+                                            <span class="order-number">#BL123455</span>
+                                        </div>
+                                        <div class="order-item date">
+                                            <span class="mobile-label">Date:</span>
+                                            <span class="order-date">May 28, 2023</span>
+                                        </div>
+                                        <div class="order-item status">
+                                            <span class="mobile-label">Status:</span>
+                                            <span class="order-status shipped">Shipped</span>
+                                        </div>
+                                        <div class="order-item total">
+                                            <span class="mobile-label">Total:</span>
+                                            <span class="order-total">$89.99</span>
+                                        </div>
+                                        <div class="order-item actions">
+                                            <a href="#" class="btn small">View</a>
+                                        </div>
+                                    </div>
+                                    <div class="order-row">
+                                        <div class="order-item order">
+                                            <span class="mobile-label">Order:</span>
+                                            <span class="order-number">#BL123454</span>
+                                        </div>
+                                        <div class="order-item date">
+                                            <span class="mobile-label">Date:</span>
+                                            <span class="order-date">April 10, 2023</span>
+                                        </div>
+                                        <div class="order-item status">
+                                            <span class="mobile-label">Status:</span>
+                                            <span class="order-status completed">Completed</span>
+                                        </div>
+                                        <div class="order-item total">
+                                            <span class="mobile-label">Total:</span>
+                                            <span class="order-total">$145.99</span>
+                                        </div>
+                                        <div class="order-item actions">
+                                            <a href="#" class="btn small">View</a>
+                                        </div>
+                                    </div>
+                                    <div class="order-row">
+                                        <div class="order-item order">
+                                            <span class="mobile-label">Order:</span>
+                                            <span class="order-number">#BL123453</span>
+                                        </div>
+                                        <div class="order-item date">
+                                            <span class="mobile-label">Date:</span>
+                                            <span class="order-date">March 22, 2023</span>
+                                        </div>
+                                        <div class="order-item status">
+                                            <span class="mobile-label">Status:</span>
+                                            <span class="order-status completed">Completed</span>
+                                        </div>
+                                        <div class="order-item total">
+                                            <span class="mobile-label">Total:</span>
+                                            <span class="order-total">$67.50</span>
+                                        </div>
+                                        <div class="order-item actions">
+                                            <a href="#" class="btn small">View</a>
+                                        </div>
+                                    </div>
+                                    <div class="order-row">
+                                        <div class="order-item order">
+                                            <span class="mobile-label">Order:</span>
+                                            <span class="order-number">#BL123452</span>
+                                        </div>
+                                        <div class="order-item date">
+                                            <span class="mobile-label">Date:</span>
+                                            <span class="order-date">February 5, 2023</span>
+                                        </div>
+                                        <div class="order-item status">
+                                            <span class="mobile-label">Status:</span>
+                                            <span class="order-status completed">Completed</span>
+                                        </div>
+                                        <div class="order-item total">
+                                            <span class="mobile-label">Total:</span>
+                                            <span class="order-total">$112.75</span>
+                                        </div>
+                                        <div class="order-item actions">
+                                            <a href="#" class="btn small">View</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Wishlist Tab -->
+                        <div class="account-tab" id="wishlist">
+                            <h2>My Wishlist</h2>
+                            <div class="wishlist-grid">
+                                <div class="wishlist-item">
+                                    <div class="wishlist-item-image">
+                                        <img src="https://via.placeholder.com/300x300?text=Rose+Bouquet" alt="Rose Bouquet">
+                                    </div>
+                                    <div class="wishlist-item-details">
+                                        <h3>Elegant Rose Bouquet</h3>
+                                        <div class="wishlist-item-price">$39.99</div>
+                                        <div class="wishlist-item-actions">
+                                            <button class="btn small primary">Add to Cart</button>
+                                            <button class="btn small secondary remove-wishlist"><i class="fas fa-times"></i> Remove</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="wishlist-item">
+                                    <div class="wishlist-item-image">
+                                        <img src="https://via.placeholder.com/300x300?text=Peony+Arrangement" alt="Peony Arrangement">
+                                    </div>
+                                    <div class="wishlist-item-details">
+                                        <h3>White Peony Arrangement</h3>
+                                        <div class="wishlist-item-price">$34.99</div>
+                                        <div class="wishlist-item-actions">
+                                            <button class="btn small primary">Add to Cart</button>
+                                            <button class="btn small secondary remove-wishlist"><i class="fas fa-times"></i> Remove</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="wishlist-item">
+                                    <div class="wishlist-item-image">
+                                        <img src="https://via.placeholder.com/300x300?text=Lavender+Wreath" alt="Lavender Wreath">
+                                    </div>
+                                    <div class="wishlist-item-details">
+                                        <h3>Lavender Field Wreath</h3>
+                                        <div class="wishlist-item-price">$27.99</div>
+                                        <div class="wishlist-item-actions">
+                                            <button class="btn small primary">Add to Cart</button>
+                                            <button class="btn small secondary remove-wishlist"><i class="fas fa-times"></i> Remove</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Addresses Tab -->
+                        <div class="account-tab" id="addresses">
+                            <h2>My Addresses</h2>
+                            <div class="addresses-grid">
+                                <div class="address-card default">
+                                    <div class="address-header">
+                                        <h3>Default Address</h3>
+                                        <div class="address-actions">
+                                            <button class="btn small">Edit</button>
+                                        </div>
+                                    </div>
+                                    <div class="address-details">
+                                        <p>Sarah Johnson<br>
+                                        123 Main Street<br>
+                                        Apt 4B<br>
+                                        New York, NY 10001<br>
+                                        United States</p>
+                                        <p class="address-phone">Phone: (555) 123-4567</p>
+                                    </div>
+                                </div>
+                                <div class="address-card">
+                                    <div class="address-header">
+                                        <h3>Work Address</h3>
+                                        <div class="address-actions">
+                                            <button class="btn small">Edit</button>
+                                            <button class="btn small secondary">Remove</button>
+                                        </div>
+                                    </div>
+                                    <div class="address-details">
+                                        <p>Sarah Johnson<br>
+                                        456 Business Ave<br>
+                                        Suite 1200<br>
+                                        New York, NY 10001<br>
+                                        United States</p>
+                                        <p class="address-phone">Phone: (555) 987-6543</p>
+                                    </div>
+                                </div>
+                                <div class="add-new-address">
+                                    <button class="btn primary"><i class="fas fa-plus"></i> Add New Address</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Account Details Tab -->
+                        <div class="account-tab" id="account">
+                            <h2>Account Details</h2>
+                            <form class="account-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="account-first-name">First Name</label>
+                                        <input type="text" id="account-first-name" value="Sarah">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="account-last-name">Last Name</label>
+                                        <input type="text" id="account-last-name" value="Johnson">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="account-email">Email Address</label>
+                                    <input type="email" id="account-email" value="sarah@example.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="account-phone">Phone Number</label>
+                                    <input type="tel" id="account-phone" value="(555) 123-4567">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn primary">Save Changes</button>
+                                </div>
+                            </form>
+
+                            <div class="change-password">
+                                <h3>Change Password</h3>
+                                <form class="password-form">
+                                    <div class="form-group">
+                                        <label for="current-password">Current Password</label>
+                                        <input type="password" id="current-password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="new-password">New Password</label>
+                                        <input type="password" id="new-password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="confirm-password">Confirm New Password</label>
+                                        <input type="password" id="confirm-password">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn primary">Change Password</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Logout Tab -->
+                        <div class="account-tab" id="logout">
+                            <div class="logout-content">
+                                <h2>Are you sure you want to log out?</h2>
+                                <p>You'll need to log in again to access your account.</p>
+                                <div class="logout-actions">
+                                    <a href="login.html" class="btn primary">Log Out</a>
+                                    <a href="#dashboard" class="btn secondary">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+  <!-- Floating eco elements -->
+  <div class="eco-floating leaf-1"></div>
+  <div class="eco-floating leaf-2"></div>
+  
+  <div class="container">
+    <!-- Shop Section -->
+    <div class="footer-section">
+      <h3>Shop</h3>
+      <ul>
+        <li><a href="#">All Products</a></li>
+        <li><a href="#">New Arrivals</a></li>
+        <li><a href="#">Bestsellers</a></li>
+        <li><a href="#">Sale Items</a></li>
+      </ul>
+      
+      <div class="eco-badge-container">
+        <span class="eco-badge organic">Organic</span>
+        <span class="eco-badge sustainable">Sustainable</span>
+      </div>
+    </div>
+    
+    <!-- Customer Service Section -->
+    <div class="footer-section">
+      <h3>Customer Service</h3>
+      <ul>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Shipping & Returns</a></li>
+        <li><a href="#">Size Guide</a></li>
+      </ul>
+      
+      <div class="eco-badge-container">
+        <span class="eco-badge carbon-neutral">Carbon Neutral</span>
+        <span class="eco-badge fair-trade">Fair Trade</span>
+      </div>
+    </div>
+    
+    <!-- About Us Section -->
+    <div class="footer-section">
+      <h3>About Us</h3>
+      <ul>
+        <li><a href="#">Our Story</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+      
+      <div class="eco-badge-container">
+        <span class="eco-badge local">Local</span>
+        <span class="eco-badge ethical">Ethical</span>
+      </div>
+    </div>
+    
+    <!-- Newsletter Section -->
+    <div class="footer-section newsletter">
+      <h3>Newsletter</h3>
+      <p>Subscribe for updates and exclusive offers</p>
+      
+      <form class="newsletter-form">
+        <input type="email" placeholder="Your email address">
+        <button type="submit" class="btn primary">Subscribe</button>
+      </form>
+      
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+      
+      <div class="eco-badge-container">
+        <span class="eco-badge plastic-free">Plastic Free</span>
+        <span class="eco-badge zero-waste">Zero Waste</span>
+        <span class="eco-badge biodegradable">Biodegradable</span>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Copyright -->
+  <div class="copyright">
+    <p>&copy; 2025 Bloomify. All rights reserved.</p>
+  </div>
+</footer>
+
+    <script src="script.js"></script>
+    <script src="account.js"></script>
+</body>
+</html>
