@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloomify - Our Collections</title>
+    <link rel="stylesheet" href="collections.css">
+    <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Font Awesome for social icons (include in head) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts (include in head) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="eco-header">
+  <div class="container">
+    <!-- Logo with animated flower -->
+    <div class="logo">
+      <span class="logo-text">Bloomify</span>
+      <span class="eco-badge1">Eco-Friendly</span>
+    </div>
+    
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+      <ul>
+        <li>
+          <a href="index.html" class="nav-link">
+            <i class="fas fa-home nav-icon"></i>
+            <span class="nav-text">Home</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+        <li>
+          <a href="products.html" class="nav-link">
+            <i class="fas fa-leaf nav-icon"></i>
+            <span class="nav-text">Shop</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+        <li>
+          <a href="collections.html" class="nav-link">
+            <i class="fas fa-puzzle-piece nav-icon"></i>
+            <span class="nav-text">Collections</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+        <li>
+          <a href="about.html" class="nav-link">
+            <i class="fas fa-seedling nav-icon"></i>
+            <span class="nav-text">About</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+        <li>
+          <a href="contact.html" class="nav-link">
+            <i class="fas fa-envelope nav-icon"></i>
+            <span class="nav-text">Contact</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+      </ul>
+      
+      <!-- Floating decorative flowers -->
+      <div class="nav-flower nav-flower-1"></div>
+      <div class="nav-flower nav-flower-2"></div>
+    </nav>
+    
+    <!-- Header Icons with 3D effects -->
+    <div class="header-icons">
+  <div class="search-container">
+    <i class="fas fa-search search-icon"></i>
+    <input type="text" class="search-input" placeholder="Search flowers, decor...">
+    <div class="search-results"></div>
+  </div>
+  
+  <a href="account.html" class="icon-container account-icon">
+    <i class="fas fa-user icon"></i>
+    <span class="icon-tooltip">My Account</span>
+  </a>
+  
+  <a href="cart.html" class="icon-container cart-icon">
+    <i class="fas fa-shopping-cart icon"></i>
+    <span class="cart-count">0</span>
+    <span class="icon-tooltip">Eco Cart</span>
+  </a>
+</div>
+  </div>
+  
+  <!-- Animated eco particles -->
+  <div class="eco-particle particle-1"></div>
+  <div class="eco-particle particle-2"></div>
+  <div class="eco-particle particle-3"></div>
+</header>
+
+    <main>
+        <section class="collections-hero">
+            <div class="hero-content">
+                <h1>Our Sustainable Collections</h1>
+                <p>Eco-friendly artificial flowers that bring nature's beauty to your space without harming the environment</p>
+            </div>
+            <div class="hero-flower-3d" id="flower3d"></div>
+        </section>
+
+        <section class="collection-filters">
+            <div class="container">
+                <div class="filter-group">
+                    <label for="category">Category:</label>
+                    <select id="category">
+                        <option value="all">All Collections</option>
+                        <option value="bouquets">Bouquets</option>
+                        <option value="plants">Potted Plants</option>
+                        <option value="wreaths">Wreaths</option>
+                        <option value="seasonal">Seasonal</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="color">Color:</label>
+                    <select id="color">
+                        <option value="all">All Colors</option>
+                        <option value="red">Red</option>
+                        <option value="pink">Pink</option>
+                        <option value="white">White</option>
+                        <option value="yellow">Yellow</option>
+                        <option value="purple">Purple</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="price">Price Range:</label>
+                    <select id="price">
+                        <option value="all">All Prices</option>
+                        <option value="low">Under $30</option>
+                        <option value="medium">$30 - $60</option>
+                        <option value="high">Over $60</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <section class="products-grid">
+            <div class="container">
+                <div class="product-card" data-category="bouquets" data-color="pink" data-price="medium">
+                    <div class="product-3d" id="product3d-1"></div>
+                    <div class="product-info">
+                        <h3>Eternal Pink Roses</h3>
+                        <p class="price">$45.00</p>
+                        <p class="eco-badge">Eco-Friendly Materials</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="plants" data-color="green" data-price="low">
+                    <div class="product-3d" id="product3d-2"></div>
+                    <div class="product-info">
+                        <h3>Succulent Trio</h3>
+                        <p class="price">$28.00</p>
+                        <p class="eco-badge">Recycled Materials</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="wreaths" data-color="white" data-price="high">
+                    <div class="product-3d" id="product3d-3"></div>
+                    <div class="product-info">
+                        <h3>Classic Eucalyptus Wreath</h3>
+                        <p class="price">$75.00</p>
+                        <p class="eco-badge">Biodegradable</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="bouquets" data-color="purple" data-price="medium">
+                    <div class="product-3d" id="product3d-4"></div>
+                    <div class="product-info">
+                        <h3>Lavender Dream</h3>
+                        <p class="price">$52.00</p>
+                        <p class="eco-badge">Sustainable Production</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="seasonal" data-color="red" data-price="low">
+                    <div class="product-3d" id="product3d-5"></div>
+                    <div class="product-info">
+                        <h3>Autumn Maple Leaves</h3>
+                        <p class="price">$32.00</p>
+                        <p class="eco-badge">Eco-Friendly Materials</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="plants" data-color="yellow" data-price="high">
+                    <div class="product-3d" id="product3d-6"></div>
+                    <div class="product-info">
+                        <h3>Sunflower Arrangement</h3>
+                        <p class="price">$68.00</p>
+                        <p class="eco-badge">Recycled Materials</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="eco-benefits">
+            <div class="container">
+                <h2>Why Choose Our Eco-Friendly Flowers?</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon" id="benefit3d-1"></div>
+                        <h3>Sustainable Materials</h3>
+                        <p>Made from recycled and biodegradable materials that minimize environmental impact</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon" id="benefit3d-2"></div>
+                        <h3>Long-Lasting Beauty</h3>
+                        <p>Enjoy beautiful flowers year-round without the waste of fresh cut flowers</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon" id="benefit3d-3"></div>
+                        <h3>Carbon Neutral Shipping</h3>
+                        <p>We offset all shipping emissions to ensure your purchase is planet-friendly</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+  <!-- Floating eco elements -->
+  <div class="eco-floating leaf-1"></div>
+  <div class="eco-floating leaf-2"></div>
+  
+  <div class="container">
+    <!-- Shop Section -->
+    <div class="footer-section">
+      <h3>Shop</h3>
+      <ul>
+        <li><a href="#">All Products</a></li>
+        <li><a href="#">New Arrivals</a></li>
+        <li><a href="#">Bestsellers</a></li>
+        <li><a href="#">Sale Items</a></li>
+      </ul>
+      
+      <div class="eco-badge-container">
+        <span class="eco-badge organic">Organic</span>
+        <span class="eco-badge sustainable">Sustainable</span>
+      </div>
+    </div>
+    
+    <!-- Customer Service Section -->
+    <div class="footer-section">
+      <h3>Customer Service</h3>
+      <ul>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Shipping & Returns</a></li>
+        <li><a href="#">Size Guide</a></li>
+      </ul>
+      
+      <div class="eco-badge-container">
+        <span class="eco-badge carbon-neutral">Carbon Neutral</span>
+        <span class="eco-badge fair-trade">Fair Trade</span>
+      </div>
+    </div>
+    
+    <!-- About Us Section -->
+    <div class="footer-section">
+      <h3>About Us</h3>
+      <ul>
+        <li><a href="#">Our Story</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+      
+      <div class="eco-badge-container">
+        <span class="eco-badge local">Local</span>
+        <span class="eco-badge ethical">Ethical</span>
+      </div>
+    </div>
+    
+    <!-- Newsletter Section -->
+    <div class="footer-section newsletter">
+      <h3>Newsletter</h3>
+      <p>Subscribe for updates and exclusive offers</p>
+      
+      <form class="newsletter-form">
+        <input type="email" placeholder="Your email address">
+        <button type="submit" class="btn primary">Subscribe</button>
+      </form>
+      
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+      
+      <div class="eco-badge-container">
+        <span class="eco-badge plastic-free">Plastic Free</span>
+        <span class="eco-badge zero-waste">Zero Waste</span>
+        <span class="eco-badge biodegradable">Biodegradable</span>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Copyright -->
+  <div class="copyright">
+    <p>&copy; 2025 Bloomify. All rights reserved.</p>
+  </div>
+</footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/gsap.min.js"></script>
+    <script src="collections.js"></script>
+</body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Tracking - Bloomify</title>
+    <link rel="stylesheet" href="order-tracking.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Font Awesome for social icons (include in head) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts (include in head) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="eco-header">
+  <div class="container">
+    <!-- Logo with animated flower -->
+    <div class="logo">
+      <span class="logo-text">Bloomify</span>
+      <span class="eco-badge1">Eco-Friendly</span>
+    </div>
+    
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+      <ul>
+        <li>
+          <a href="index.html" class="nav-link">
+            <i class="fas fa-home nav-icon"></i>
+            <span class="nav-text">Home</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+        <li>
+          <a href="products.html" class="nav-link">
+            <i class="fas fa-leaf nav-icon"></i>
+            <span class="nav-text">Shop</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+        <li>
+          <a href="collections.html" class="nav-link">
+            <i class="fas fa-puzzle-piece nav-icon"></i>
+            <span class="nav-text">Collections</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+        <li>
+          <a href="about.html" class="nav-link">
+            <i class="fas fa-seedling nav-icon"></i>
+            <span class="nav-text">About</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+        <li>
+          <a href="contact.html" class="nav-link">
+            <i class="fas fa-envelope nav-icon"></i>
+            <span class="nav-text">Contact</span>
+            <div class="nav-dot"></div>
+          </a>
+        </li>
+      </ul>
+      
+      <!-- Floating decorative flowers -->
+      <div class="nav-flower nav-flower-1"></div>
+      <div class="nav-flower nav-flower-2"></div>
+    </nav>
+    
+    <!-- Header Icons with 3D effects -->
+    <div class="header-icons">
+  <div class="search-container">
+    <i class="fas fa-search search-icon"></i>
+    <input type="text" class="search-input" placeholder="Search flowers, decor...">
+    <div class="search-results"></div>
+  </div>
+  
+  <a href="account.html" class="icon-container account-icon">
+    <i class="fas fa-user icon"></i>
+    <span class="icon-tooltip">My Account</span>
+  </a>
+  
+  <a href="cart.html" class="icon-container cart-icon">
+    <i class="fas fa-shopping-cart icon"></i>
+    <span class="cart-count">0</span>
+    <span class="icon-tooltip">Eco Cart</span>
+  </a>
+</div>
+  </div>
+  
+  <!-- Animated eco particles -->
+  <div class="eco-particle particle-1"></div>
+  <div class="eco-particle particle-2"></div>
+  <div class="eco-particle particle-3"></div>
+</header>
+
+    <main>
+        <section class="tracking-hero">
+            <div class="hero-content">
+                <h1>Track Your Order</h1>
+                <p>Follow your eco-friendly flowers on their sustainable journey to your home</p>
+            </div>
+            <div class="hero-flower-3d" id="trackingFlower3d"></div>
+        </section>
+
+        <section class="tracking-form-section">
+            <div class="container">
+                <div class="tracking-form-container">
+                    <div class="tracking-form">
+                        <h2>Enter Your Order Details</h2>
+                        <form id="trackingForm">
+                            <div class="form-group">
+                                <label for="orderId">Order Number</label>
+                                <input type="text" id="orderId" name="orderId" placeholder="e.g. BLM-2023-12345" required>
+                                <div class="form-icon" id="orderIdIcon"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                                <div class="form-icon" id="emailIcon"></div>
+                            </div>
+                            <button type="submit" class="track-btn">
+                                <span>Track Order</span>
+                                <div class="track-icon" id="trackIcon"></div>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="tracking-image">
+                        <div class="package-3d" id="package3d"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tracking-results-section" id="trackingResults" style="display: none;">
+            <div class="container1">
+                <div class="tracking-header">
+                    <h2>Your Order <span id="orderNumberDisplay">BLM-2023-12345</span></h2>
+                    <p class="order-date">Placed on <span id="orderDate">June 15, 2023</span></p>
+                </div>
+
+                <div class="tracking-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                        <div class="progress-steps">
+                            <div class="step completed" id="step1">
+                                <div class="step-icon"></div>
+                                <div class="step-label">Order Placed</div>
+                                <div class="step-date">Jun 15</div>
+                            </div>
+                            <div class="step completed" id="step2">
+                                <div class="step-icon"></div>
+                                <div class="step-label">Processing</div>
+                                <div class="step-date">Jun 16</div>
+                            </div>
+                            <div class="step active" id="step3">
+                                <div class="step-icon"></div>
+                                <div class="step-label">Shipped</div>
+                                <div class="step-date">Jun 17</div>
+                            </div>
+                            <div class="step" id="step4">
+                                <div class="step-icon"></div>
+                                <div class="step-label">In Transit</div>
+                                <div class="step-date">Est. Jun 20</div>
+                            </div>
+                            <div class="step" id="step5">
+                                <div class="step-icon"></div>
+                                <div class="step-label">Delivered</div>
+                                <div class="step-date">Est. Jun 22</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tracking-details">
+                    <div class="detail-card">
+                        <h3>Order Summary</h3>
+                        <div class="order-items" id="orderItems">
+                            <!-- Items will be added dynamically -->
+                        </div>
+                        <div class="order-totals">
+                            <div class="total-row">
+                                <span>Subtotal</span>
+                                <span>$87.00</span>
+                            </div>
+                            <div class="total-row">
+                                <span>Shipping</span>
+                                <span>$0.00 <small>(Carbon Neutral)</small></span>
+                            </div>
+                            <div class="total-row grand-total">
+                                <span>Total</span>
+                                <span>$87.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <h3>Shipping Information</h3>
+                        <div class="shipping-info">
+                            <div class="info-row">
+                                <span class="info-label">Carrier:</span>
+                                <span class="info-value">EcoShip Green Delivery</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Tracking Number:</span>
+                                <span class="info-value">ES-987654321</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Shipping To:</span>
+                                <span class="info-value">123 Green Street, Portland, OR 97201, United States</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Estimated Delivery:</span>
+                                <span class="info-value">Friday, June 22, 2023</span>
+                            </div>
+                        </div>
+                        <div class="map-container" id="deliveryMap3d"></div>
+                    </div>
+                </div>
+
+                <div class="eco-impact">
+                    <h3>Your Order's Positive Impact</h3>
+                    <div class="impact-grid">
+                        <div class="impact-card">
+                            <div class="impact-icon" id="impact1"></div>
+                            <h4>Carbon Neutral Shipping</h4>
+                            <p>Your delivery's emissions have been offset through renewable energy projects</p>
+                            <div class="impact-stat">0 kg CO₂</div>
+                        </div>
+                        <div class="impact-card">
+                            <div class="impact-icon" id="impact2"></div>
+                            <h4>Plastic Saved</h4>
+                            <p>By choosing artificial flowers, you've prevented plastic waste from fresh flower packaging</p>
+                            <div class="impact-stat">1.2 kg</div>
+                        </div>
+                        <div class="impact-card">
+                            <div class="impact-icon" id="impact3"></div>
+                            <h4>Water Conserved</h4>
+                            <p>No water needed to maintain your beautiful blooms</p>
+                            <div class="impact-stat">150 liters</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="help-section">
+            <div class="container1">
+                <h2>Need Help With Your Order?</h2>
+                <div class="help-options">
+                    <div class="help-card" id="help1">
+                        <div class="help-icon"></div>
+                        <h3>Order Support</h3>
+                        <p>Questions about your order status or need to make changes?</p>
+                        <a href="#" class="help-link">Contact Our Team</a>
+                    </div>
+                    <div class="help-card" id="help2">
+                        <div class="help-icon"></div>
+                        <h3>Returns & Exchanges</h3>
+                        <p>Learn about our sustainable return policy</p>
+                        <a href="#" class="help-link">View Policy</a>
+                    </div>
+                    <div class="help-card" id="help3">
+                        <div class="help-icon"></div>
+                        <h3>FAQs</h3>
+                        <p>Find answers to common questions</p>
+                        <a href="#" class="help-link">Browse FAQs</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+  <!-- Floating eco elements -->
+  <div class="eco-floating leaf-1"></div>
+  <div class="eco-floating leaf-2"></div>
+  
+  <div class="container">
+    <!-- Shop Section -->
+    <div class="footer-section">
+      <h3>Shop</h3>
+      <ul>
+        <li><a href="#">All Products</a></li>
+        <li><a href="#">New Arrivals</a></li>
+        <li><a href="#">Bestsellers</a></li>
+        <li><a href="#">Sale Items</a></li>
+      </ul>
+      
+      <div class="eco-badge-container">
+        <span class="eco-badge organic">Organic</span>
+        <span class="eco-badge sustainable">Sustainable</span>
+      </div>
+    </div>
+    
+    <!-- Customer Service Section -->
+    <div class="footer-section">
+      <h3>Customer Service</h3>
+      <ul>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Shipping & Returns</a></li>
+        <li><a href="#">Size Guide</a></li>
+      </ul>
+      
+      <div class="eco-badge-container">
+        <span class="eco-badge carbon-neutral">Carbon Neutral</span>
+        <span class="eco-badge fair-trade">Fair Trade</span>
+      </div>
+    </div>
+    
+    <!-- About Us Section -->
+    <div class="footer-section">
+      <h3>About Us</h3>
+      <ul>
+        <li><a href="#">Our Story</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+      
+      <div class="eco-badge-container">
+        <span class="eco-badge local">Local</span>
+        <span class="eco-badge ethical">Ethical</span>
+      </div>
+    </div>
+    
+    <!-- Newsletter Section -->
+    <div class="footer-section newsletter">
+      <h3>Newsletter</h3>
+      <p>Subscribe for updates and exclusive offers</p>
+      
+      <form class="newsletter-form">
+        <input type="email" placeholder="Your email address">
+        <button type="submit" class="btn primary">Subscribe</button>
+      </form>
+      
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+      
+      <div class="eco-badge-container">
+        <span class="eco-badge plastic-free">Plastic Free</span>
+        <span class="eco-badge zero-waste">Zero Waste</span>
+        <span class="eco-badge biodegradable">Biodegradable</span>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Copyright -->
+  <div class="copyright">
+    <p>&copy; 2025 Bloomify. All rights reserved.</p>
+  </div>
+</footer>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/gsap.min.js"></script>
+    <script src="order-tracking.js"></script>
+</body>
+</html>
