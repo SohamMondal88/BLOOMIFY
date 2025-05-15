@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms & Conditions | Bloomify - Artificial Flower Shop</title>
+    <title>Terms &amp; Conditions | Bloomify - Artificial Flower Shop</title>
     <style>
         :root {
             --primary: #4a8f29;
@@ -111,7 +111,22 @@
             padding-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.2);
         }
-        
+
+        /* Added styles for footer links */
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 2rem;
@@ -127,7 +142,7 @@
 <body>
     <header>
         <div class="container">
-            <h1>Terms & Conditions</h1>
+            <h1>Terms &amp; Conditions</h1>
         </div>
     </header>
     
@@ -214,20 +229,20 @@
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
-                <ul style="list-style: none; padding: 0;">
-                    <li><a href="/" style="color: var(--accent);">Home</a></li>
-                    <li><a href="/shop" style="color: var(--accent);">Shop</a></li>
-                    <li><a href="/about" style="color: var(--accent);">About Us</a></li>
-                    <li><a href="/contact" style="color: var(--accent);">Contact</a></li>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/shop">Shop</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/contact">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h3>Legal</h3>
-                <ul style="list-style: none; padding: 0;">
-                    <li><a href="/privacy" style="color: var(--accent);">Privacy Policy</a></li>
-                    <li><a href="/terms" style="color: var(--accent);">Terms & Conditions</a></li>
-                    <li><a href="/shipping" style="color: var(--accent);">Shipping Policy</a></li>
-                    <li><a href="/returns" style="color: var(--accent);">Return Policy</a></li>
+                <ul class="footer-links">
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms &amp; Conditions</a></li>
+                    <li><a href="/shipping">Shipping Policy</a></li>
+                    <li><a href="/returns">Return Policy</a></li>
                 </ul>
             </div>
         </div>

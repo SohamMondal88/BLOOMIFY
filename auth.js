@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Simulate login process
-            simulateLogin(email, password);
+            // Authenticate user
+            authenticateUser(email, password);
         });
     }
     
@@ -65,8 +65,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Simulate registration process
-            simulateRegistration(fullName, email, password);
+            // Register user
+            registerUser(fullName, email, password);
         });
     }
     
@@ -79,6 +79,103 @@ document.addEventListener('DOMContentLoaded', function() {
             // In a real app, you would redirect to the provider's auth page
         });
     });
+    
+    // Authenticate user with backend
+    async function authenticateUser(email, password) {
+        // Show loading state
+        const submitButton = loginForm.querySelector('button[type="submit"]');
+        const originalText = submitButton.innerHTML;
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Authenticating...';
+        submitButton.disabled = true;
+        
+        try {
+            // In a real application, you would make an actual API call here
+            const response = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })
+            });
+            
+            if (!response.ok) {
+                throw new Error('Login failed');
+            }
+            
+            const data = await response.json();
+            
+            // Store the authentication token
+            localStorage.setItem('bloomifyToken', data.token);
+            
+            // Store user data if needed
+            if (data.user) {
+                localStorage.setItem('bloomifyUser', JSON.stringify(data.user));
+            }
+            
+            showAlert('Login successful! Redirecting...', 'success');
+            
+            // Redirect to account dashboard
+            setTimeout(() => {
+                window.location.href = 'account.html';
+            }, 1500);
+            
+        } catch (error) {
+            console.error('Login error:', error);
+            showAlert('Invalid email or password', 'error');
+        } finally {
+            // Reset button
+            submitButton.innerHTML = originalText;
+            submitButton.disabled = false;
+        }
+    }
+    
+    // Register new user
+    async function registerUser(fullName, email, password) {
+        // Show loading state
+        const submitButton = registerForm.querySelector('button[type="submit"]');
+        const originalText = submitButton.innerHTML;
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating account...';
+        submitButton.disabled = true;
+        
+        try {
+            // In a real application, you would make an actual API call here
+            const response = await fetch('/api/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ fullName, email, password })
+            });
+            
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Registration failed');
+            }
+            
+            const data = await response.json();
+            
+            showAlert('Registration successful! Welcome to Bloomify.', 'success');
+            
+            // Auto-login after registration if desired
+            localStorage.setItem('bloomifyToken', data.token);
+            if (data.user) {
+                localStorage.setItem('bloomifyUser', JSON.stringify(data.user));
+            }
+            
+            // Redirect to account dashboard
+            setTimeout(() => {
+                window.location.href = 'account.html';
+            }, 1500);
+            
+        } catch (error) {
+            console.error('Registration error:', error);
+            showAlert(error.message || 'Registration failed. Please try again.', 'error');
+        } finally {
+            // Reset button
+            submitButton.innerHTML = originalText;
+            submitButton.disabled = false;
+        }
+    }
     
     // Helper functions
     function validateEmail(email) {
@@ -125,52 +222,6 @@ document.addEventListener('DOMContentLoaded', function() {
             alert.style.animation = 'slideOut 0.3s ease-in';
             setTimeout(() => alert.remove(), 300);
         }, 5000);
-    }
-    
-    function simulateLogin(email, password) {
-        // Show loading state
-        const submitButton = loginForm.querySelector('button[type="submit"]');
-        const originalText = submitButton.innerHTML;
-        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Authenticating...';
-        submitButton.disabled = true;
-        
-        // Simulate API call
-        setTimeout(() => {
-            // In a real app, you would make an actual API call here
-            showAlert('Login successful! Redirecting...', 'success');
-            
-            // Reset button
-            submitButton.innerHTML = originalText;
-            submitButton.disabled = false;
-            
-            // Redirect to dashboard/home page
-            setTimeout(() => {
-                window.location.href = 'index.html'; // Change to your actual home page
-            }, 1500);
-        }, 2000);
-    }
-    
-    function simulateRegistration(fullName, email, password) {
-        // Show loading state
-        const submitButton = registerForm.querySelector('button[type="submit"]');
-        const originalText = submitButton.innerHTML;
-        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating account...';
-        submitButton.disabled = true;
-        
-        // Simulate API call
-        setTimeout(() => {
-            // In a real app, you would make an actual API call here
-            showAlert('Registration successful! Welcome to Bloomify.', 'success');
-            
-            // Reset button
-            submitButton.innerHTML = originalText;
-            submitButton.disabled = false;
-            
-            // Redirect to login page or dashboard
-            setTimeout(() => {
-                window.location.href = 'login.html'; // Or directly to dashboard if auto-login
-            }, 1500);
-        }, 2000);
     }
     
     // Add CSS for animations
