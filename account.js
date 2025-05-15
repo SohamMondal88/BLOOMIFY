@@ -1,293 +1,95 @@
-// Account Page Functionality
-document.addEventListener('DOMContentLoaded', function() {
-    // Tab functionality
-    const tabLinks = document.querySelectorAll('.account-menu a');
-    const tabPanels = document.querySelectorAll('.account-tab');
-    
-    tabLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Remove active class from all tabs
-            tabLinks.forEach(tab => tab.parentNode.classList.remove('active'));
-            tabPanels.forEach(panel => panel.classList.remove('active'));
-            
-            // Add active class to clicked tab
-            this.parentNode.classList.add('active');
-            
-            // Show corresponding panel
-            const panelId = this.getAttribute('href').substring(1);
-            document.getElementById(panelId).classList.add('active');
-        });
-    });
-    
-    // Load wishlist items
+// account.js - Frontend Logic
+document.addEventListener('DOMContentLoaded', async function() {
+    // Check authentication
+    if (!localStorage.getItem('bloomifyToken')) {
+        window.location.href = '/login.html';
+        return;
+    }
+
+    // DOM Elements
+    const accountContainer = document.querySelector('.account-container');
+    const userNameElement = document.querySelector('.user-name');
+    const summaryValues = document.querySelectorAll('.summary-value');
+    const ordersTableBody = document.querySelector('.orders-table-body');
     const wishlistGrid = document.querySelector('.wishlist-grid');
-    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-    
-    function displayWishlistItems() {
-        wishlistGrid.innerHTML = '';
-        
-        if (wishlist.length === 0) {
-            wishlistGrid.innerHTML = `
-                <div class="empty-wishlist">
-                    <i class="fas fa-heart"></i>
-                    <h3>Your wishlist is empty</h3>
-                    <p>Save your favorite items here for later</p>
-                    <a href="products.html" class="btn primary">Browse Products</a>
-                </div>
-            `;
-            return;
-        }
-        
-        wishlist.forEach((item, index) => {
-            const wishlistItem = document.createElement('div');
-            wishlistItem.className = 'wishlist-item';
-            wishlistItem.innerHTML = `
-                <div class="wishlist-item-image">
-                    <img src="${item.image}" alt="${item.name}">
-                </div>
-                <div class="wishlist-item-details">
-                    <h3>${item.name}</h3>
-                    <div class="wishlist-item-price">$${item.price.toFixed(2)}</div>
-                    <div class="wishlist-item-actions">
-                        <button class="btn small primary add-to-cart" data-id="${item.id}">Add to Cart</button>
-                        <button class="btn small secondary remove-wishlist" data-index="${index}"><i class="fas fa-times"></i> Remove</button>
-                    </div>
-                </div>
-            `;
-            
-            wishlistGrid.appendChild(wishlistItem);
-        });
-        
-        // Add event listeners
-        addWishlistEventListeners();
-    }
-    
-    // Add event listeners to wishlist items
-    function addWishlistEventListeners() {
-        // Add to cart buttons
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', function() {
-                const productId = parseInt(this.getAttribute('data-id'));
-                const product = wishlist.find(item => item.id === productId);
-                
-                let cart = JSON.parse(localStorage.getItem('cart')) || [];
-                const existingItem = cart.find(item => item.id === productId);
-                
-                if (existingItem) {
-                    existingItem.quantity += 1;
-                } else {
-                    cart.push({
-                        ...product,
-                        quantity: 1
-                    });
-                }
-                
-                localStorage.setItem('cart', JSON.stringify(cart));
-                
-                // Update cart count in header
-                const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-                document.querySelector('.cart-count').textContent = totalItems;
-                
-                // Show notification
-                showNotification(`${product.name} added to cart!`);
-            });
-        });
-        
-        // Remove from wishlist buttons
-        document.querySelectorAll('.remove-wishlist').forEach(button => {
-            button.addEventListener('click', function() {
-                const index = parseInt(this.getAttribute('data-index'));
-                const productName = wishlist[index].name;
-                
-                wishlist.splice(index, 1);
-                localStorage.setItem('wishlist', JSON.stringify(wishlist));
-                
-                // Update wishlist count in summary
-                document.querySelector('.summary-value:nth-child(2)').textContent = wishlist.length;
-                
-                // Show notification
-                showNotification(`${productName} removed from wishlist!`);
-                
-                // Refresh wishlist display
-                displayWishlistItems();
-            });
-        });
-    }
-    
-    // Show notification
-    function showNotification(message) {
-        const notification = document.createElement('div');
-        notification.className = 'notification';
-        notification.textContent = message;
-        document.body.appendChild(notification);
-        
-        setTimeout(() => {
-            notification.classList.add('show');
-        }, 10);
-        
-        setTimeout(() => {
-            notification.classList.remove('show');
-            setTimeout(() => {
-                notification.remove();
-            }, 300);
-        }, 3000);
-    }
-    
-    // Initialize the page
-    displayWishlistItems();
-    
-    // Update wishlist count in summary
-    document.querySelector('.summary-value:nth-child(2)').textContent = wishlist.length;
-    
-    // Add new address button
-    const addNewAddressBtn = document.querySelector('.add-new-address');
-    if (addNewAddressBtn) {
-        addNewAddressBtn.addEventListener('click', function() {
-            // In a real app, this would show a form to add a new address
-            alert('Add new address functionality would go here');
-        });
-    }
-    
-    // Account form submission
+    const addressesGrid = document.querySelector('.addresses-grid');
     const accountForm = document.querySelector('.account-form');
-    if (accountForm) {
-        accountForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            // In a real app, this would save the account details
-            showNotification('Account details updated successfully!');
-        });
-    }
-    
-    // Password form submission
     const passwordForm = document.querySelector('.password-form');
-    if (passwordForm) {
-        passwordForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            // In a real app, this would change the password
-            const currentPassword = document.getElementById('current-password').value;
-            const newPassword = document.getElementById('new-password').value;
-            const confirmPassword = document.getElementById('confirm-password').value;
-            
-            if (newPassword !== confirmPassword) {
-                alert('New passwords do not match');
-                return;
-            }
-            
-            if (newPassword.length < 8) {
-                alert('Password must be at least 8 characters');
-                return;
-            }
-            
-            // Clear form
-            passwordForm.reset();
-            showNotification('Password changed successfully!');
-        });
+    const logoutContent = document.querySelector('.logout-content');
+
+    // Global State
+    let currentUser = {};
+    let userOrders = [];
+    let userWishlist = [];
+    let userAddresses = [];
+
+    // Initialize the page
+    async function init() {
+        try {
+            // Load user data
+            currentUser = await fetchUserData();
+            userNameElement.textContent = currentUser.name;
+
+            // Load all data in parallel
+            await Promise.all([
+                loadOrders(),
+                loadWishlist(),
+                loadAddresses()
+            ]);
+
+            // Update summary counts
+            updateSummaryCounts();
+
+            // Set up event listeners
+            setupEventListeners();
+        } catch (error) {
+            console.error('Initialization error:', error);
+            showNotification('Failed to load account data', 'error');
+        }
     }
-});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Enhanced Account Page Functionality
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize user data
-    const currentUser = JSON.parse(localStorage.getItem('currentUser')) || {};
-    const userOrders = JSON.parse(localStorage.getItem(`userOrders_${currentUser.id}`)) || [];
-    const userWishlist = JSON.parse(localStorage.getItem(`userWishlist_${currentUser.id}`)) || [];
-    const userAddresses = JSON.parse(localStorage.getItem(`userAddresses_${currentUser.id}`)) || [];
-    
-    // Set welcome message
-    document.querySelector('.user-name').textContent = currentUser.name || 'Guest';
-    
-    // Tab switching
-    const switchTab = (tabId) => {
-        document.querySelectorAll('.account-tab').forEach(tab => {
-            tab.classList.remove('active');
+    // Fetch user data from backend
+    async function fetchUserData() {
+        const response = await fetch('/api/users/me', {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('bloomifyToken')}`
+            }
         });
-        document.getElementById(tabId).classList.add('active');
-        
-        // Load tab-specific data
-        if(tabId === 'orders') loadOrders();
-        if(tabId === 'wishlist') loadWishlist();
-        if(tabId === 'addresses') loadAddresses();
-    };
-    
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch user data');
+        }
+
+        return await response.json();
+    }
+
     // Load orders data
-    const loadOrders = () => {
-        const ordersTable = document.querySelector('#orders .orders-table-body');
-        ordersTable.innerHTML = '';
-        
-        if(userOrders.length === 0) {
-            ordersTable.innerHTML = `
+    async function loadOrders() {
+        try {
+            const response = await fetch('/api/users/orders', {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('bloomifyToken')}`
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to load orders');
+            }
+
+            userOrders = await response.json();
+            renderOrders();
+        } catch (error) {
+            console.error('Error loading orders:', error);
+            showNotification('Failed to load order history', 'error');
+        }
+    }
+
+    // Render orders table
+    function renderOrders() {
+        ordersTableBody.innerHTML = '';
+
+        if (userOrders.length === 0) {
+            ordersTableBody.innerHTML = `
                 <div class="empty-orders">
                     <i class="fas fa-shopping-bag"></i>
                     <h3>No orders yet</h3>
@@ -297,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
             return;
         }
-        
+
         userOrders.forEach(order => {
             const orderRow = document.createElement('div');
             orderRow.className = 'order-row';
@@ -308,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 <div class="order-item date">
                     <span class="mobile-label">Date:</span>
-                    <span class="order-date">${formatDate(order.date)}</span>
+                    <span class="order-date">${new Date(order.date).toLocaleDateString()}</span>
                 </div>
                 <div class="order-item status">
                     <span class="mobile-label">Status:</span>
@@ -319,15 +121,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     <span class="order-total">$${order.total.toFixed(2)}</span>
                 </div>
                 <div class="order-item actions">
-                    <a href="#" class="btn small" data-order-id="${order.id}">View</a>
+                    <a href="#" class="btn small view-order" data-order-id="${order.id}">View</a>
                     ${order.status === 'Processing' ? 
                         `<a href="#" class="btn small secondary cancel-order" data-order-id="${order.id}">Cancel</a>` : ''}
                 </div>
             `;
-            ordersTable.appendChild(orderRow);
+            ordersTableBody.appendChild(orderRow);
         });
-        
+
         // Add event listeners for order actions
+        document.querySelectorAll('.view-order').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const orderId = this.getAttribute('data-order-id');
+                viewOrderDetails(orderId);
+            });
+        });
+
         document.querySelectorAll('.cancel-order').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -335,14 +145,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 cancelOrder(orderId);
             });
         });
-    };
-    
+    }
+
     // Load wishlist data
-    const loadWishlist = () => {
-        const wishlistGrid = document.querySelector('.wishlist-grid');
+    async function loadWishlist() {
+        try {
+            const response = await fetch('/api/users/wishlist', {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('bloomifyToken')}`
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to load wishlist');
+            }
+
+            userWishlist = await response.json();
+            renderWishlist();
+        } catch (error) {
+            console.error('Error loading wishlist:', error);
+            showNotification('Failed to load wishlist', 'error');
+        }
+    }
+
+    // Render wishlist items
+    function renderWishlist() {
         wishlistGrid.innerHTML = '';
-        
-        if(userWishlist.length === 0) {
+
+        if (userWishlist.length === 0) {
             wishlistGrid.innerHTML = `
                 <div class="empty-wishlist">
                     <i class="fas fa-heart"></i>
@@ -353,26 +183,35 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
             return;
         }
-        
+
         userWishlist.forEach(item => {
             const wishlistItem = document.createElement('div');
             wishlistItem.className = 'wishlist-item';
             wishlistItem.innerHTML = `
                 <div class="wishlist-item-image">
-                    <img src="${item.image}" alt="${item.name}">
+                    <img src="${item.image}" alt="${item.name}" loading="lazy">
                     ${item.onSale ? `<span class="sale-badge">Sale</span>` : ''}
+                    ${item.ecoCertificates.length > 0 ? 
+                        `<span class="eco-badge" title="${item.ecoCertificates.join(', ')}">
+                            <i class="fas fa-leaf"></i> Eco-Friendly
+                        </span>` : ''}
                 </div>
                 <div class="wishlist-item-details">
                     <h3>${item.name}</h3>
                     <div class="wishlist-item-price">
                         $${item.price.toFixed(2)}
-                        ${item.originalPrice ? `<span class="original-price">$${item.originalPrice.toFixed(2)}</span>` : ''}
+                        ${item.originalPrice ? 
+                            `<span class="original-price">$${item.originalPrice.toFixed(2)}</span>` : ''}
                     </div>
                     ${item.inStock ? 
                         `<div class="stock in-stock"><i class="fas fa-check-circle"></i> In Stock</div>` : 
                         `<div class="stock out-of-stock"><i class="fas fa-times-circle"></i> Out of Stock</div>`}
+                    <div class="carbon-footprint">
+                        <i class="fas fa-seedling"></i> Carbon Footprint: ${item.carbonFootprint} kg CO₂
+                    </div>
                     <div class="wishlist-item-actions">
-                        <button class="btn small primary add-to-cart" data-id="${item.id}">
+                        <button class="btn small primary add-to-cart" data-id="${item.id}" 
+                            ${!item.inStock ? 'disabled' : ''}>
                             <i class="fas fa-shopping-cart"></i> Add to Cart
                         </button>
                         <button class="btn small secondary remove-wishlist" data-id="${item.id}">
@@ -383,28 +222,48 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
             wishlistGrid.appendChild(wishlistItem);
         });
-        
-        // Add wishlist event listeners
+
+        // Add event listeners for wishlist actions
         document.querySelectorAll('.add-to-cart').forEach(btn => {
             btn.addEventListener('click', function() {
                 const productId = this.getAttribute('data-id');
                 addToCartFromWishlist(productId);
             });
         });
-        
+
         document.querySelectorAll('.remove-wishlist').forEach(btn => {
             btn.addEventListener('click', function() {
                 const productId = this.getAttribute('data-id');
                 removeFromWishlist(productId);
             });
         });
-    };
-    
+    }
+
     // Load addresses
-    const loadAddresses = () => {
-        const addressesGrid = document.querySelector('.addresses-grid');
+    async function loadAddresses() {
+        try {
+            const response = await fetch('/api/users/addresses', {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('bloomifyToken')}`
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to load addresses');
+            }
+
+            userAddresses = await response.json();
+            renderAddresses();
+        } catch (error) {
+            console.error('Error loading addresses:', error);
+            showNotification('Failed to load addresses', 'error');
+        }
+    }
+
+    // Render addresses
+    function renderAddresses() {
         addressesGrid.innerHTML = '';
-        
+
         userAddresses.forEach(address => {
             const addressCard = document.createElement('div');
             addressCard.className = `address-card ${address.isDefault ? 'default' : ''}`;
@@ -429,7 +288,7 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
             addressesGrid.appendChild(addressCard);
         });
-        
+
         // Add new address card
         const addNewCard = document.createElement('div');
         addNewCard.className = 'add-new-address';
@@ -439,7 +298,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </button>
         `;
         addressesGrid.appendChild(addNewCard);
-        
+
         // Add address event listeners
         document.querySelectorAll('.edit-address').forEach(btn => {
             btn.addEventListener('click', function() {
@@ -447,26 +306,132 @@ document.addEventListener('DOMContentLoaded', function() {
                 openAddressForm(addressId);
             });
         });
-        
+
         document.querySelectorAll('.set-default-address').forEach(btn => {
             btn.addEventListener('click', function() {
                 const addressId = this.getAttribute('data-address-id');
                 setDefaultAddress(addressId);
             });
         });
-        
+
         document.querySelectorAll('.delete-address').forEach(btn => {
             btn.addEventListener('click', function() {
                 const addressId = this.getAttribute('data-address-id');
                 deleteAddress(addressId);
             });
         });
-        
-        document.getElementById('add-new-address-btn').addEventListener('click', openAddressForm);
-    };
-    
-    // Address form modal
-    const openAddressForm = (addressId = null) => {
+
+        document.getElementById('add-new-address-btn').addEventListener('click', () => openAddressForm());
+    }
+
+    // Update summary counts
+    function updateSummaryCounts() {
+        summaryValues[0].textContent = userOrders.length;
+        summaryValues[1].textContent = userWishlist.length;
+        summaryValues[2].textContent = userAddresses.length;
+    }
+
+    // View order details
+    async function viewOrderDetails(orderId) {
+        try {
+            const response = await fetch(`/api/orders/${orderId}`, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('bloomifyToken')}`
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to load order details');
+            }
+
+            const order = await response.json();
+            showOrderModal(order);
+        } catch (error) {
+            console.error('Error loading order details:', error);
+            showNotification('Failed to load order details', 'error');
+        }
+    }
+
+    // Cancel order
+    async function cancelOrder(orderId) {
+        if (!confirm('Are you sure you want to cancel this order?')) return;
+
+        try {
+            const response = await fetch(`/api/orders/${orderId}/cancel`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('bloomifyToken')}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to cancel order');
+            }
+
+            showNotification('Order cancelled successfully', 'success');
+            await loadOrders();
+            updateSummaryCounts();
+        } catch (error) {
+            console.error('Error cancelling order:', error);
+            showNotification('Failed to cancel order', 'error');
+        }
+    }
+
+    // Add to cart from wishlist
+    async function addToCartFromWishlist(productId) {
+        try {
+            const response = await fetch('/api/cart', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('bloomifyToken')}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ productId, quantity: 1 })
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to add to cart');
+            }
+
+            const product = userWishlist.find(item => item.id === productId);
+            showNotification(`${product.name} added to cart!`, 'success');
+            
+            // Update cart count in header
+            updateCartCount();
+        } catch (error) {
+            console.error('Error adding to cart:', error);
+            showNotification('Failed to add to cart', 'error');
+        }
+    }
+
+    // Remove from wishlist
+    async function removeFromWishlist(productId) {
+        try {
+            const response = await fetch(`/api/wishlist/${productId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('bloomifyToken')}`
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to remove from wishlist');
+            }
+
+            const product = userWishlist.find(item => item.id === productId);
+            showNotification(`${product.name} removed from wishlist`, 'success');
+            
+            await loadWishlist();
+            updateSummaryCounts();
+        } catch (error) {
+            console.error('Error removing from wishlist:', error);
+            showNotification('Failed to remove from wishlist', 'error');
+        }
+    }
+
+    // Open address form modal
+    function openAddressForm(addressId = null) {
         const address = addressId ? userAddresses.find(a => a.id === addressId) : null;
         
         const modal = document.createElement('div');
@@ -530,7 +495,6 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <option value="United States" ${address && address.country === 'United States' ? 'selected' : ''}>United States</option>
                                 <option value="Canada" ${address && address.country === 'Canada' ? 'selected' : ''}>Canada</option>
                                 <option value="United Kingdom" ${address && address.country === 'United Kingdom' ? 'selected' : ''}>United Kingdom</option>
-                                <!-- More countries would be added in production -->
                             </select>
                         </div>
                     </div>
@@ -551,24 +515,23 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.appendChild(modal);
         
         // Event listeners for modal
-        document.querySelector('.close-modal').addEventListener('click', () => modal.remove());
-        document.querySelector('.cancel-address').addEventListener('click', () => modal.remove());
+        modal.querySelector('.close-modal').addEventListener('click', () => modal.remove());
+        modal.querySelector('.cancel-address').addEventListener('click', () => modal.remove());
         
         // Form submission
-        document.getElementById('address-form').addEventListener('submit', function(e) {
+        modal.querySelector('#address-form').addEventListener('submit', async function(e) {
             e.preventDefault();
-            saveAddress(this);
+            await saveAddress(this);
             modal.remove();
         });
-    };
-    
-    // Save address function
-    const saveAddress = (form) => {
+    }
+
+    // Save address
+    async function saveAddress(form) {
         const addressId = form.querySelector('#address-id').value;
         const isDefault = form.querySelector('#set-default').checked;
         
-        const newAddress = {
-            id: addressId || generateId(),
+        const addressData = {
             type: form.querySelector('#address-type').value,
             fullName: form.querySelector('#full-name').value,
             phone: form.querySelector('#phone').value,
@@ -578,128 +541,219 @@ document.addEventListener('DOMContentLoaded', function() {
             state: form.querySelector('#state').value,
             zipCode: form.querySelector('#zip-code').value,
             country: form.querySelector('#country').value,
-            isDefault: isDefault
+            isDefault
         };
         
-        if(addressId) {
-            // Update existing address
-            const index = userAddresses.findIndex(a => a.id === addressId);
-            userAddresses[index] = newAddress;
-        } else {
-            // Add new address
-            if(isDefault) {
-                // Remove default status from other addresses
-                userAddresses.forEach(a => a.isDefault = false);
+        try {
+            const url = addressId ? `/api/addresses/${addressId}` : '/api/addresses';
+            const method = addressId ? 'PUT' : 'POST';
+            
+            const response = await fetch(url, {
+                method,
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('bloomifyToken')}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(addressData)
+            });
+            
+            if (!response.ok) {
+                throw new Error('Failed to save address');
             }
-            userAddresses.push(newAddress);
-        }
-        
-        // Save to localStorage
-        localStorage.setItem(`userAddresses_${currentUser.id}`, JSON.stringify(userAddresses));
-        
-        // Reload addresses
-        loadAddresses();
-        updateSummaryCounts();
-        
-        // Show notification
-        showNotification(`Address ${addressId ? 'updated' : 'added'} successfully!`);
-    };
-    
-    // Set default address
-    const setDefaultAddress = (addressId) => {
-        userAddresses.forEach(a => {
-            a.isDefault = a.id === addressId;
-        });
-        
-        localStorage.setItem(`userAddresses_${currentUser.id}`, JSON.stringify(userAddresses));
-        loadAddresses();
-        showNotification('Default address updated!');
-    };
-    
-    // Delete address
-    const deleteAddress = (addressId) => {
-        if(confirm('Are you sure you want to delete this address?')) {
-            userAddresses = userAddresses.filter(a => a.id !== addressId);
-            localStorage.setItem(`userAddresses_${currentUser.id}`, JSON.stringify(userAddresses));
-            loadAddresses();
+            
+            showNotification(`Address ${addressId ? 'updated' : 'added'} successfully!`, 'success');
+            await loadAddresses();
             updateSummaryCounts();
-            showNotification('Address deleted successfully!');
+        } catch (error) {
+            console.error('Error saving address:', error);
+            showNotification('Failed to save address', 'error');
         }
-    };
-    
-    // Add to cart from wishlist
-    const addToCartFromWishlist = (productId) => {
-        const product = userWishlist.find(item => item.id === productId);
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    }
+
+    // Set default address
+    async function setDefaultAddress(addressId) {
+        try {
+            const response = await fetch(`/api/addresses/${addressId}/default`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('bloomifyToken')}`
+                }
+            });
+            
+            if (!response.ok) {
+                throw new Error('Failed to set default address');
+            }
+            
+            showNotification('Default address updated!', 'success');
+            await loadAddresses();
+        } catch (error) {
+            console.error('Error setting default address:', error);
+            showNotification('Failed to set default address', 'error');
+        }
+    }
+
+    // Delete address
+    async function deleteAddress(addressId) {
+        if (!confirm('Are you sure you want to delete this address?')) return;
         
-        const existingItem = cart.find(item => item.id === productId);
-        if(existingItem) {
-            existingItem.quantity += 1;
-        } else {
-            cart.push({
-                ...product,
-                quantity: 1
+        try {
+            const response = await fetch(`/api/addresses/${addressId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('bloomifyToken')}`
+                }
+            });
+            
+            if (!response.ok) {
+                throw new Error('Failed to delete address');
+            }
+            
+            showNotification('Address deleted successfully!', 'success');
+            await loadAddresses();
+            updateSummaryCounts();
+        } catch (error) {
+            console.error('Error deleting address:', error);
+            showNotification('Failed to delete address', 'error');
+        }
+    }
+
+    // Show order details modal
+    function showOrderModal(order) {
+        const modal = document.createElement('div');
+        modal.className = 'modal';
+        modal.innerHTML = `
+            <div class="modal-content wide">
+                <span class="close-modal">&times;</span>
+                <h2>Order #${order.orderNumber}</h2>
+                <div class="order-details">
+                    <div class="order-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Order Date:</span>
+                            <span class="meta-value">${new Date(order.date).toLocaleString()}</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Status:</span>
+                            <span class="meta-value status ${order.status.toLowerCase()}">${order.status}</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Total:</span>
+                            <span class="meta-value">$${order.total.toFixed(2)}</span>
+                        </div>
+                        ${order.trackingNumber ? `
+                        <div class="meta-item">
+                            <span class="meta-label">Tracking:</span>
+                            <span class="meta-value">
+                                <a href="${order.trackingUrl}" target="_blank">${order.trackingNumber}</a>
+                            </span>
+                        </div>` : ''}
+                    </div>
+                    
+                    <div class="order-items">
+                        <h3>Items</h3>
+                        <div class="items-list">
+                            ${order.items.map(item => `
+                                <div class="order-item">
+                                    <div class="item-image">
+                                        <img src="${item.image}" alt="${item.name}" loading="lazy">
+                                    </div>
+                                    <div class="item-details">
+                                        <h4>${item.name}</h4>
+                                        <div class="item-price">$${item.price.toFixed(2)} x ${item.quantity}</div>
+                                        ${item.ecoCertificates.length > 0 ? `
+                                        <div class="item-eco">
+                                            <i class="fas fa-leaf"></i> ${item.ecoCertificates.join(', ')}
+                                        </div>` : ''}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <div class="order-summary">
+                        <div class="summary-row">
+                            <span class="summary-label">Subtotal:</span>
+                            <span class="summary-value">$${order.subtotal.toFixed(2)}</span>
+                        </div>
+                        <div class="summary-row">
+                            <span class="summary-label">Shipping:</span>
+                            <span class="summary-value">$${order.shippingCost.toFixed(2)}</span>
+                        </div>
+                        ${order.discount > 0 ? `
+                        <div class="summary-row">
+                            <span class="summary-label">Discount:</span>
+                            <span class="summary-value">-$${order.discount.toFixed(2)}</span>
+                        </div>` : ''}
+                        <div class="summary-row total">
+                            <span class="summary-label">Total:</span>
+                            <span class="summary-value">$${order.total.toFixed(2)}</span>
+                        </div>
+                        <div class="summary-row carbon">
+                            <span class="summary-label">Carbon Offset:</span>
+                            <span class="summary-value">${order.carbonOffset} kg CO₂</span>
+                        </div>
+                    </div>
+                    
+                    <div class="order-actions">
+                        <button class="btn secondary" id="print-invoice">Print Invoice</button>
+                        ${order.status === 'Processing' ? 
+                            `<button class="btn secondary" id="cancel-order" data-order-id="${order.id}">Cancel Order</button>` : ''}
+                        <button class="btn primary" id="close-modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        
+        // Event listeners for modal
+        modal.querySelector('.close-modal').addEventListener('click', () => modal.remove());
+        modal.querySelector('#close-modal').addEventListener('click', () => modal.remove());
+        
+        if (modal.querySelector('#print-invoice')) {
+            modal.querySelector('#print-invoice').addEventListener('click', () => {
+                window.print();
             });
         }
         
-        localStorage.setItem('cart', JSON.stringify(cart));
-        
-        // Update cart count in header
-        updateCartCount();
-        
-        showNotification(`${product.name} added to cart!`);
-    };
-    
-    // Remove from wishlist
-    const removeFromWishlist = (productId) => {
-        const productIndex = userWishlist.findIndex(item => item.id === productId);
-        if(productIndex !== -1) {
-            const productName = userWishlist[productIndex].name;
-            userWishlist.splice(productIndex, 1);
-            localStorage.setItem(`userWishlist_${currentUser.id}`, JSON.stringify(userWishlist));
-            
-            // Update wishlist display
-            loadWishlist();
-            updateSummaryCounts();
-            
-            showNotification(`${productName} removed from wishlist!`);
+        if (modal.querySelector('#cancel-order')) {
+            modal.querySelector('#cancel-order').addEventListener('click', async function() {
+                const orderId = this.getAttribute('data-order-id');
+                modal.remove();
+                await cancelOrder(orderId);
+            });
         }
-    };
-    
-    // Cancel order
-    const cancelOrder = (orderId) => {
-        if(confirm('Are you sure you want to cancel this order?')) {
-            const orderIndex = userOrders.findIndex(o => o.id === orderId);
-            if(orderIndex !== -1 && userOrders[orderIndex].status === 'Processing') {
-                userOrders[orderIndex].status = 'Cancelled';
-                localStorage.setItem(`userOrders_${currentUser.id}`, JSON.stringify(userOrders));
-                loadOrders();
-                showNotification('Order cancelled successfully!');
+    }
+
+    // Update cart count in header
+    async function updateCartCount() {
+        try {
+            const response = await fetch('/api/cart/count', {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('bloomifyToken')}`
+                }
+            });
+            
+            if (response.ok) {
+                const { count } = await response.json();
+                document.querySelectorAll('.cart-count').forEach(el => {
+                    el.textContent = count;
+                });
             }
+        } catch (error) {
+            console.error('Error updating cart count:', error);
         }
-    };
-    
-    // Update summary counts
-    const updateSummaryCounts = () => {
-        document.querySelector('.summary-value:nth-child(1)').textContent = userOrders.length;
-        document.querySelector('.summary-value:nth-child(2)').textContent = userWishlist.length;
-        document.querySelector('.summary-value:nth-child(3)').textContent = userAddresses.length;
-    };
-    
-    // Helper functions
-    const formatDate = (dateString) => {
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        return new Date(dateString).toLocaleDateString(undefined, options);
-    };
-    
-    const generateId = () => {
-        return Math.random().toString(36).substr(2, 9);
-    };
-    
-    const showNotification = (message) => {
+    }
+
+    // Show notification
+    function showNotification(message, type = 'success') {
         const notification = document.createElement('div');
-        notification.className = 'notification';
-        notification.textContent = message;
+        notification.className = `notification ${type}`;
+        notification.innerHTML = `
+            <div class="notification-content">
+                <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+                <span>${message}</span>
+            </div>
+        `;
         document.body.appendChild(notification);
         
         setTimeout(() => {
@@ -712,27 +766,134 @@ document.addEventListener('DOMContentLoaded', function() {
                 notification.remove();
             }, 300);
         }, 3000);
-    };
-    
-    const updateCartCount = () => {
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-        document.querySelectorAll('.cart-count').forEach(el => {
-            el.textContent = totalItems;
+    }
+
+    // Setup event listeners
+    function setupEventListeners() {
+        // Tab switching
+        document.querySelectorAll('.account-menu a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector('.account-menu li.active').classList.remove('active');
+                this.parentNode.classList.add('active');
+                const tabId = this.getAttribute('href').substring(1);
+                switchTab(tabId);
+            });
         });
-    };
-    
-    // Initialize page
-    updateSummaryCounts();
-    loadOrders();
-    
-    // Tab click event listeners
-    document.querySelectorAll('.account-menu a').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector('.account-menu li.active').classList.remove('active');
-            this.parentNode.classList.add('active');
-            switchTab(this.getAttribute('href').substring(1));
+
+        // Account form submission
+        if (accountForm) {
+            accountForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                await saveAccountDetails(this);
+            });
+        }
+
+        // Password form submission
+        if (passwordForm) {
+            passwordForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                await changePassword(this);
+            });
+        }
+
+        // Logout button
+        if (logoutContent) {
+            const logoutBtn = logoutContent.querySelector('.btn.primary');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    localStorage.removeItem('bloomifyToken');
+                    window.location.href = '/login.html';
+                });
+            }
+        }
+    }
+
+    // Switch tabs
+    function switchTab(tabId) {
+        document.querySelectorAll('.account-tab').forEach(tab => {
+            tab.classList.remove('active');
         });
-    });
+        
+        const activeTab = document.getElementById(tabId);
+        if (activeTab) {
+            activeTab.classList.add('active');
+        }
+    }
+
+    // Save account details
+    async function saveAccountDetails(form) {
+        const formData = {
+            firstName: form.querySelector('#account-first-name').value,
+            lastName: form.querySelector('#account-last-name').value,
+            email: form.querySelector('#account-email').value,
+            phone: form.querySelector('#account-phone').value
+        };
+        
+        try {
+            const response = await fetch('/api/users/me', {
+                method: 'PATCH',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('bloomifyToken')}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+            
+            if (!response.ok) {
+                throw new Error('Failed to update account');
+            }
+            
+            const updatedUser = await response.json();
+            userNameElement.textContent = `${updatedUser.firstName} ${updatedUser.lastName}`;
+            showNotification('Account details updated successfully!', 'success');
+        } catch (error) {
+            console.error('Error updating account:', error);
+            showNotification('Failed to update account details', 'error');
+        }
+    }
+
+    // Change password
+    async function changePassword(form) {
+        const formData = {
+            currentPassword: form.querySelector('#current-password').value,
+            newPassword: form.querySelector('#new-password').value,
+            confirmPassword: form.querySelector('#confirm-password').value
+        };
+        
+        if (formData.newPassword !== formData.confirmPassword) {
+            showNotification('New passwords do not match', 'error');
+            return;
+        }
+        
+        if (formData.newPassword.length < 8) {
+            showNotification('Password must be at least 8 characters', 'error');
+            return;
+        }
+        
+        try {
+            const response = await fetch('/api/users/change-password', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('bloomifyToken')}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+            
+            if (!response.ok) {
+                throw new Error('Failed to change password');
+            }
+            
+            form.reset();
+            showNotification('Password changed successfully!', 'success');
+        } catch (error) {
+            console.error('Error changing password:', error);
+            showNotification('Failed to change password', 'error');
+        }
+    }
+
+    // Initialize the page
+    init();
 });

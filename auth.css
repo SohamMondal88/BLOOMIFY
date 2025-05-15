@@ -1,0 +1,343 @@
+/* Base Styles */
+:root {
+    --primary-color: #4CAF50;
+    --primary-dark: #3e8e41;
+    --secondary-color: #8BC34A;
+    --accent-color: #FFC107;
+    --text-color: #333;
+    --light-text: #777;
+    --background-light: #f9f9f9;
+    --white: #ffffff;
+    --border-radius: 12px;
+    --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--background-light);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Auth Container */
+.auth-container {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+}
+
+.auth-background {
+    flex: 1;
+    background: url('../images/auth-bg.jpg') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    display: none;
+}
+
+.floral-decoration {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%234CAF50" d="M50,10 C60,20 70,30 80,40 C90,50 80,60 70,70 C60,80 50,90 40,80 C30,70 20,60 10,50 C0,40 10,30 20,20 C30,10 40,0 50,10 Z"/></svg>');
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    z-index: 1;
+}
+
+.floral-decoration.right {
+    right: 0;
+    transform: rotate(180deg);
+}
+
+.auth-form-container {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.logo {
+    max-width: 180px;
+    height: auto;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.subtitle {
+    color: var(--light-text);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Form Styles */
+.auth-form {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.input-with-icon {
+    position: relative;
+}
+
+.input-with-icon i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--light-text);
+}
+
+.input-with-icon input {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.input-with-icon input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+.forgot-password {
+    text-align: right;
+    margin-top: 0.5rem;
+}
+
+.forgot-password a {
+    color: var(--light-text);
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.forgot-password a:hover {
+    color: var(--primary-color);
+}
+
+.password-hint {
+    font-size: 0.8rem;
+    color: var(--light-text);
+    margin-top: 0.5rem;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.checkbox-group input {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+}
+
+.checkbox-group label {
+    margin-bottom: 0;
+    font-weight: normal;
+}
+
+.checkbox-group a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* Button Styles */
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.btn-primary i {
+    margin-left: 8px;
+}
+
+/* Divider */
+.auth-divider {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    color: var(--light-text);
+    font-size: 0.9rem;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #ddd;
+}
+
+.auth-divider::before {
+    margin-right: 1rem;
+}
+
+.auth-divider::after {
+    margin-left: 1rem;
+}
+
+/* Social Login */
+.social-login {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-social {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-social i {
+    margin-right: 8px;
+    font-size: 1.1rem;
+}
+
+.btn-social.google {
+    color: #DB4437;
+}
+
+.btn-social.google:hover {
+    border-color: #DB4437;
+    background: rgba(219, 68, 55, 0.05);
+}
+
+.btn-social.facebook {
+    color: #4267B2;
+}
+
+.btn-social.facebook:hover {
+    border-color: #4267B2;
+    background: rgba(66, 103, 178, 0.05);
+}
+
+/* Footer */
+.auth-footer {
+    text-align: center;
+    color: var(--light-text);
+    font-size: 0.9rem;
+}
+
+.auth-footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Responsive Design */
+@media (min-width: 992px) {
+    .auth-background {
+        display: block;
+    }
+    
+    .auth-form-container {
+        padding: 3rem;
+    }
+    
+    .floral-decoration {
+        opacity: 0.3;
+    }
+}
+
+/* 3D Effects */
+.auth-form {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.btn-primary {
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--primary-dark);
+    border-radius: var(--border-radius);
+    top: 5px;
+    left: 0;
+    transform: translateZ(-1px);
+    transition: var(--transition);
+    z-index: -1;
+}
+
+.btn-primary:hover::after {
+    top: 2px;
+    transform: translateZ(-2px);
+}
+
+.input-with-icon input {
+    transform-style: preserve-3d;
+}
+
+.input-with-icon input:focus {
+    transform: translateZ(5px);
+}
